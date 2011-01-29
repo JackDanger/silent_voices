@@ -41,7 +41,8 @@ module SilentVoices
     end
 
     def decrement_string string
-      (string.to_i - 1).to_s.rjust(3, '0')
+      length = string.length
+      (string.to_i - 1).to_s.rjust(length, '0')
     end
 
     def increment_string string
@@ -53,6 +54,7 @@ module SilentVoices
       SilentVoices.pages.each do |page|
         page.write
       end
+      puts ''
       puts "Wrote #{SilentVoices.pages.size} pages"
     end
   end
