@@ -41,6 +41,7 @@ module SilentVoices
       yield h
       h << nav unless is_a?(StartPage)
       h << "</div>"
+      h << "<div class='footer'>Created by <a href='http://jackcanty.com'>Jack</a>, send corrections and feedback to <em>silentvoices at jackcanty dot com</em></div>"
       h << "</body></html>"
       h.join("\n")
     end

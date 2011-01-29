@@ -10,6 +10,20 @@ div.content {
   margin: 1em auto;
 }
 
+div.footer {
+  width: 720px;
+  margin: 0 auto;
+  padding: 1.5em 0 6em 0;
+  clear: both;
+  text-align: center;
+  color: #999;
+}
+div.footer a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #999;
+}
+
 div.prev_link,
 div.home_link,
 div.next_link {
@@ -35,7 +49,11 @@ h1, h2, h3 {
 h3.quote {
   color: #999;
 }
-
+div.chapter {
+  float: left;
+  clear: both;
+  margin-bottom: 1em;
+}
 .verse {
   float: left;
   clear: both;
