@@ -1,4 +1,4 @@
 
 source "http://rubygems.org"
 
-gem 'feminizer'
+gem 'feminizer', '1.0.3'
