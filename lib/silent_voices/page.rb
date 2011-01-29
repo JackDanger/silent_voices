@@ -27,23 +27,19 @@ module SilentVoices
     def template
       stylesheet_path = is_a?(StartPage) ? 'style.css' : '../style.css'
       h = []
+      nav = "<div class='prev_link'>#{prev_link}</div>" +
+            "<div class='home_link'><a href='#{SilentVoices.start_page.path_from(self)}'>Silent Voices</a></div>" +
+            "<div class='next_link'>#{next_link}</div>"
+
       h << "<html><head>"
       h << "<link href='#{stylesheet_path}' media='screen' rel='stylesheet' type='text/css' />"
       h << "<link href='http://fonts.googleapis.com/css?family=Bentham' rel='stylesheet' type='text/css'>"
       h << "<link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>"
       h << "</head><body>"
       h << "<div class='content'>"
-      unless is_a?(StartPage)
-        h << "<div class='prev_link'>#{prev_link}</div>"
-        h << "<div class='home_link'><a href='#{SilentVoices.start_page.path_from(self)}'>Home</a></div>"
-        h << "<div class='next_link'>#{next_link}</div>"
-      end
+      h << nav unless is_a?(StartPage)
       yield h
-      unless is_a?(StartPage)
-        h << "<div class='prev_link'>#{prev_link}</div>"
-        h << "<div class='home_link'><a href='#{SilentVoices.start_page.path_from(self)}'>Home</a></div>"
-        h << "<div class='next_link'>#{next_link}</div>"
-      end
+      h << nav unless is_a?(StartPage)
       h << "</div>"
       h << "</body></html>"
       h.join("\n")
@@ -99,6 +95,8 @@ module SilentVoices
 
     def html
       template do |h|
+        h << '<h1>Silent Voices</h1>'
+        h << '<h3>"If God is male then male is God." -- Mary Daly</h3>'
         h << "<ul class='links books'>"
         book_pages.each do |book|
           h << "<li><a href='#{book.path_from(self)}'>#{book.name}</a></li>"
