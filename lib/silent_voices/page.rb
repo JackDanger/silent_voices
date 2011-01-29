@@ -43,11 +43,11 @@ module SilentVoices
     end
 
     def prev_link
-      "<a href='#{prev_page.path_from(self)}'> &laquo; #{prev_page.name}</a>" if prev_page
+      "<a href='#{prev_page.path_from(self)}'>&laquo; #{prev_page.name}</a>" if prev_page
     end
 
     def next_link
-      "<a href='#{next_page.path_from(self)}'> &raquo; #{next_page.name}</a>" if next_page
+      "<a href='#{next_page.path_from(self)}'>#{next_page.name} &raquo;</a>" if next_page
     end
 
     def decrement_string string
@@ -138,9 +138,10 @@ module SilentVoices
 
     def html
       template do |h|
+        h << "<h2 class='book'>#{name}</h2>"
         h << "<ul class='links chapters'>"
         chapter_pages.each do |chapter|
-          h << "<li><a href='#{chapter.path_from(self)}'>#{chapter.name}</a></li>"
+          h << "<li><a href='#{chapter.path_from(self)}'>#{chapter.number.to_i}</a></li>"
         end
         h << "</ul>"
       end
@@ -187,15 +188,20 @@ module SilentVoices
     end
 
     def prev_page
-      @prev_page ||= SilentVoices.pages.detect {|page| name(decrement_string(number)) == page.name }
+      @prev_page ||=
+        SilentVoices.pages.detect {|page| name(decrement_string(number)) == page.name } ||
+        SilentVoices.pages.detect {|page| page.is_a?(BookPage) && decrement_string(book[:number]).eql?(page.number) }
     end
 
     def next_page
-      @next_page ||= SilentVoices.pages.detect {|page| name(increment_string(number)) == page.name }
+      @next_page ||=
+        SilentVoices.pages.detect {|page| name(increment_string(number)) == page.name } ||
+        SilentVoices.pages.detect {|page| page.is_a?(BookPage) && increment_string(book[:number]).eql?(page.number) }
     end
 
     def html
       template do |h|
+        h << "<h2 class='chapter'>#{name}</h2>"
         h << "<div class='chapter'>"
         verses.each do |verse|
           h << "<p class='verse'>"
