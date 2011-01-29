@@ -1,5 +1,8 @@
 module SilentVoices
+  Directory = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '_site'))
+
   class Compiler
+
     def initialize source
       @source = source
       set_feminizing_forms
@@ -14,6 +17,7 @@ module SilentVoices
 
       def compile
         each_book do |book_text|
+          puts book_text.class.name
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
               verse = normalize       verse
@@ -26,27 +30,37 @@ module SilentVoices
       end
 
       def write_layout
-        # output some framing html
+        start = Page.new('/', 'Silent Voices')
+        @compiled.each do |book|
+          book_name = "#{book[:number]} #{book[:name]}"
+          path = "/#{book[:number]}"
+          start.add_link(book_name, path)
+          book_page = Page.new(path, book_name)
+          book[:chapters].each do |chapter|
+            path = "/#{book[:number]}-#{chapter[:number]}"
+            chapter_page = Page.new(path, "#{book_name}", chapter[:number].to_i)
+            chapter[:verses].each do |verse|
+              chapter_page.add_verse verse
+            end
+          end
+        end
+        Page.write_all
       end
 
       def each_book
         ret = []
-        rxp = /^Book (\d\d) (.*)/
-        begin
-          index        = @source.index(rxp)
-          line         = @source[rxp]
-          number, name = @source.scan(rxp).first.flatten
-          offset       = index + line.size
-          next_index   = @source[offset, @source.size].index(rxp)
-          endpoint     = next_index ? next_index : @source.size
-          text         = @source[offset, endpoint - offset]
-          chapters     = yield text
-          # trim the remaining source
-          @source = @source[endpoint, @source.length]
+        @source.split(/^Book*/).each do |book|
+          next unless book =~ /^ (\d\d) (.*)/
+          header       = book[/^ (\d\d) (.*)/]
+          number, name = book.scan(/^ (\d\d) (.*)/).first.flatten
+          book         = book[header.size, book.size] # trim the header
+          chapters     = yield book
+          puts "#{number} - #{name}"
+          puts "# chapters: #{chapters.size}"
           ret << { :name => name,
-                   :number => number.to_i,
+                   :number => number,
                    :chapters => chapters }
-        end while next_index
+        end
         ret
       end
 
@@ -58,7 +72,7 @@ module SilentVoices
           next_index = string.index /^#{marker.succ}:/
           endpoint = next_index ? next_index : string.size
           verses = yield string[index, endpoint-index]
-          ret << {:number => marker.to_i,
+          ret << {:number => marker,
                   :verses => verses}
           marker.succ!
         end while next_index
@@ -74,7 +88,7 @@ module SilentVoices
           next_index = string.index /^\d\d\d:#{marker.succ}/
           endpoint = next_index ? next_index : string.size
           text = yield string[index + line.size, endpoint - index - line.size]
-          ret << {:number => marker.to_i,
+          ret << {:number => marker,
                   :text   => text}
           marker.succ!
         end while next_index
@@ -82,14 +96,17 @@ module SilentVoices
       end
 
       def normalize string
+        return string
         string.gsub(/[\s\n]+/, ' ').sub(/^[\s\n]|[\s\n]$/, '')
       end
 
       def strip_comments string
+        return string
         string.gsub /(.*)(\{.*\})(.*)/, '\1\3'
       end
 
       def feminize string
+        return string
         Feminizer.feminize_text string
       end
 
