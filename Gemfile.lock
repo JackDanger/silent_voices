@@ -1,0 +1,18 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.0.3)
+    feminizer (1.0.3)
+      activesupport
+      nokogiri
+      without_accents (= 0.9.0)
+    nokogiri (1.4.4)
+    utf8_utils (2.0.1)
+    without_accents (0.9.0)
+      utf8_utils
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  feminizer (= 1.0.3)
