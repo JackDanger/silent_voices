@@ -213,7 +213,8 @@ module SilentVoices
         h << "<div class='chapter'>"
         verses.each do |verse|
           h << "<div class='verse'>"
-          h << "<div class='number'>#{verse[:number]}</div><div class='text'>#{verse[:text]}</div>"
+          h << "<div class='number'><a name='#{verse[:number]}' href='##{verse[:number]}'>#{verse[:number]}</a></div>"
+          h << "<div class='text'>#{verse[:text]}</div>"
           h << "</div>"
         end
         h << "</div>"

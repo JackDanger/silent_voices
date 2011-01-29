@@ -66,6 +66,10 @@ div.chapter {
   clear: left;
   width: 40px;
 }
+.verse .number a {
+  text-decoration: none;
+  color: #000;
+}
 .verse .text {
   font-family: Neuton, Helvetica, Georgia;
   float: left;
