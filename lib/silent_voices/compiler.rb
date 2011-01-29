@@ -17,7 +17,6 @@ module SilentVoices
 
       def compile
         each_book do |book_text|
-          puts book_text.class.name
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
               verse = normalize       verse
@@ -55,8 +54,6 @@ module SilentVoices
           number, name = book.scan(/^ (\d\d) (.*)/).first.flatten
           book         = book[header.size, book.size] # trim the header
           chapters     = yield book
-          puts "#{number} - #{name}"
-          puts "# chapters: #{chapters.size}"
           ret << { :name => name,
                    :number => number,
                    :chapters => chapters }

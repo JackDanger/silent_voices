@@ -40,7 +40,8 @@ module SilentVoices
       verses.each do |verse|
         h << "<div class='verse'>#{verse[:number]}: #{verse[:text]}</div>"
       end
-      h = "</body></html>"
+      h << "</body></html>"
+      h
     end
 
     def prev_link
