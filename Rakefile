@@ -4,6 +4,6 @@ COMPILED_SOURCE  = File.expand_path File.join(File.dirname(__FILE__), 'vendor', 
 
 task :compile do
   File.open COMPILED_SOURCE, 'w' do |f|
-    f.write SilentVoices::Parser.process(File.read GUTENBERG_SOURCE)
+    f.write SilentVoices::Compiler.new(File.read GUTENBERG_SOURCE).process
   end
 end
