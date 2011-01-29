@@ -1,0 +1,21 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: ;
+}
+
+div.content {
+  width: 720px;
+  margin: 1em auto;
+}
+
+div.prev_link,
+div.home_link,
+div.next_link {
+  width: 33%;
+  float: left;
+  clear: none;
+}
+
+p.verse span.number { font-family: 'Bentham', arial, serif; }

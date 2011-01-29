@@ -22,6 +22,8 @@ module SilentVoices
       h = []
       h << "<html><head>"
       h << "<link href='#{stylesheet_path}' media='screen' rel='stylesheet' type='text/css' />"
+      h << "<link href='http://fonts.googleapis.com/css?family=Bentham' rel='stylesheet' type='text/css'>"
+      h << "<link href='http://fonts.googleapis.com/css?family=Tinos' rel='stylesheet' type='text/css'>"
       h << "</head><body>"
       h << "<div class='content'>"
       unless is_a?(StartPage)
