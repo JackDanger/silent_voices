@@ -28,8 +28,6 @@ module SilentVoices
         'his' =>         'her',
         'him' =>         'her',
         'himself' =>     'herself',
-        'waitress' =>    'waiter',
-        'waitressed' =>  'waited',
         'craftsman' =>   'craftswoman',
         'nobleman' =>    'noblewoman',
         'gentleman' =>   'lady',
@@ -39,26 +37,18 @@ module SilentVoices
         'king' =>        'queen',
         'kings' =>       'queens',
         'sissy' =>       'boyish',
-        'emasculate' =>  'defeminize',
-        'cowboy' =>      'cowgirl',
-        'cowboying' =>   'cowgirling',
-        'cowboys' =>     'cowgirls',
-        'dad' =>         'mom',
-        'daddy' =>       'mommy',
-        'dick' =>        'pussy',
-        'ex-wife' =>     'ex-husband',
         'father' =>      'mother',
         'fathers' =>     'mothers',
         'brother' =>     'sister',
         'brothers' =>    'sisters',
-        'Matt' =>        'Mattie',
-        'David' =>       'Davida',
-        'Paul' =>        'Paula'
       }
     end
     def self.names
       {
-        'Jesus' => 'Jesas'
+        'Matt' =>        'Matta',
+        'David' =>       'Davia',
+        'Paul' =>        'Paula',
+        'Jesus' =>       'Jesas'
       }
     end
   end
