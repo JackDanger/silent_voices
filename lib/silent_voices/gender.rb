@@ -1,7 +1,14 @@
 module SilentVoices
   module Gender
+
+    def self.feminize_text string
+      string = Feminizer.feminize_text string
+      string = cleanup_her string
+      string
+    end
+
     def self.forms
-      common.merge(names)
+      common.merge names
     end
     def self.common
       {
@@ -14,10 +21,13 @@ module SilentVoices
         'boy' =>         'girl',
         'boys' =>        'girls',
         'he' =>          'she',
-        'his' =>         'her',
+        'his' =>         'hers',
         'him' =>         'her',
         'himself' =>     'herself',
         'craftsman' =>   'craftswoman',
+        'husband' =>     'wife',
+        'husbands' =>    'wives',
+        'kinsman' =>     'kinswoman',
         'nobleman' =>    'noblewoman',
         'gentleman' =>   'lady',
         'gentlemen' =>   'ladies',
@@ -38,6 +48,13 @@ module SilentVoices
         'Paul' =>        'Paula',
         'Jesus' =>       'Jesas'
       }
+    end
+    def self.cleanup_her string
+      # The fact that 'her' is the opposite of both 'his' and 'him' is problematic.
+      # Cleanup misswaps here
+      string.
+        gsub(/him wife/, 'his wife').
+        gsub(/of hers /, 'of her ')
     end
   end
 end
