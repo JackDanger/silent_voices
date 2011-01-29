@@ -16,6 +16,7 @@ module SilentVoices
     end
 
     def add_link text, href
+      href = '/' == href ? '/index.html' : "/voices#{href}.html"
       @links << "<a href='#{href}'>#{text}</a>"
     end
 
@@ -28,11 +29,12 @@ module SilentVoices
     end
 
     def outfile
-      SilentVoices::Directory + (path == '/' ? '/index.html' : "#{path}.html")
+      SilentVoices::Directory + (path == '/' ? '/index.html' : "/voices/#{path}.html")
     end
 
     def html
-      h = "<html><body>#{prev_link} &middot #{next_link}"
+      h = "<html><body>"
+      h << "#{prev_link} &middot #{next_link}" unless '/' == path
       links.each do |link|
         h << link
         h << "<br />"
@@ -56,7 +58,7 @@ module SilentVoices
         prev_page = SilentVoices.pages.detect {|page| page.path == "#{prev_book}" }
       end
 
-      "<a href='/#{prev_page.path}'> &laquo; #{prev_page.name}</a>" if prev_page
+      "<a href='/voices/#{prev_page.path}'> &laquo; #{prev_page.name}</a>" if prev_page
     end
 
     def next_link
@@ -71,7 +73,7 @@ module SilentVoices
         next_page = SilentVoices.pages.detect {|page| page.path == "#{next_book}" }
       end
 
-      "<a href='/#{next_page.path}'> &laquo; #{next_page.name}</a>" if next_page
+      "<a href='/voices/#{next_page.path}'> &laquo; #{next_page.name}</a>" if next_page
     end
 
     def self.write_all

@@ -1,5 +1,5 @@
 module SilentVoices
-  Directory = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '_site'))
+  Directory = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 
   class Compiler
 
@@ -17,6 +17,7 @@ module SilentVoices
 
       def compile
         each_book do |book_text|
+          puts "#{book_text[0, 35]}"
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
               verse = normalize       verse
@@ -35,7 +36,9 @@ module SilentVoices
           path = "/#{book[:number]}"
           start.add_link(book_name, path)
           book_page = Page.new(path, book_name)
+          puts "final chapter size: #{book[:chapters].size}"
           book[:chapters].each do |chapter|
+            puts chapter[:number]
             path = "/#{book[:number]}-#{chapter[:number]}"
             chapter_page = Page.new(path, "#{book_name}", chapter[:number].to_i)
             chapter[:verses].each do |verse|
@@ -54,6 +57,7 @@ module SilentVoices
           number, name = book.scan(/^ (\d\d) (.*)/).first.flatten
           book         = book[header.size, book.size] # trim the header
           chapters     = yield book
+          puts "chapter size: #{chapters.size}"
           ret << { :name => name,
                    :number => number,
                    :chapters => chapters }
@@ -69,6 +73,7 @@ module SilentVoices
           next_index = string.index /^#{marker.succ}:/
           endpoint = next_index ? next_index : string.size
           verses = yield string[index, endpoint-index]
+          puts "adding chapter #{marker}"
           ret << {:number => marker,
                   :verses => verses}
           marker.succ!
