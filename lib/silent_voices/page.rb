@@ -27,16 +27,18 @@ module SilentVoices
     def template
       stylesheet_path = is_a?(StartPage) ? 'style.css' : '../style.css'
       h = []
-      nav = "<div class='prev_link'>#{prev_link}</div>" +
+      nav = "<div class='nav'>" +
+            "<div class='prev_link'>#{prev_link}</div>" +
             "<div class='home_link'><a href='#{SilentVoices.start_page.path_from(self)}'>Silent Voices</a></div>" +
-            "<div class='next_link'>#{next_link}</div>"
+            "<div class='next_link'>#{next_link}</div>" +
+            "</div>"
 
       h << "<html><head>"
       h << "<link href='#{stylesheet_path}' media='screen' rel='stylesheet' type='text/css' />"
       h << "<link href='http://fonts.googleapis.com/css?family=Bentham' rel='stylesheet' type='text/css'>"
       h << "<link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>"
       h << "</head><body>"
-      h << "<div class='content'>"
+      h << "<div class='container'>"
       h << nav unless is_a?(StartPage)
       yield h
       h << nav unless is_a?(StartPage)
@@ -98,11 +100,14 @@ module SilentVoices
       template do |h|
         h << '<h1>Silent Voices</h1>'
         h << "<h3 class='quote'>\"If God is male then male is God.\" -- Mary Daly</h3>"
-        h << "<ul class='links books'>"
+        h << "<div class='entries books'>"
         book_pages.each do |book|
-          h << "<li><a href='#{book.path_from(self)}'>#{book.name}</a></li>"
+          h << "<div class='entry book'>"
+          h << "<div class='anchor'>#{book.number}</div>"
+          h << "<div class='content'><a href='#{book.path_from(self)}'>#{book.name}</a></div>"
+          h << "</div>"
         end
-        h << "</ul>"
+        h << "</div>"
       end
     end
 
@@ -147,9 +152,12 @@ module SilentVoices
     def html
       template do |h|
         h << "<h2 class='book'>#{name}</h2>"
-        h << "<ul class='links chapters'>"
+        h << "<div class='entries chapters'>"
         chapter_pages.each do |chapter|
-          h << "<li><a href='#{chapter.path_from(self)}'>#{chapter.number.to_i}</a></li>"
+          h << "<div class='entry chapter'>"
+          h << "<div class='anchor'>Chapter #{chapter.number.to_i}</div>"
+          h << "<div class='content chapter_preview'><a href='#{chapter.path_from(self)}'>#{chapter.verses.first[:text].to_s[0, 45]}[...]</a></div>"
+          h << "</div>"
         end
         h << "</ul>"
       end
@@ -210,11 +218,11 @@ module SilentVoices
     def html
       template do |h|
         h << "<h2 class='chapter'>#{name}</h2>"
-        h << "<div class='chapter'>"
+        h << "<div class='entries chapter'>"
         verses.each do |verse|
-          h << "<div class='verse'>"
-          h << "<div class='number'><a name='#{verse[:number]}' href='##{verse[:number]}'>#{verse[:number]}</a></div>"
-          h << "<div class='text'>#{verse[:text]}</div>"
+          h << "<div class='entry verse'>"
+          h << "<div class='anchor number'><a name='#{verse[:number]}' href='##{verse[:number]}'>#{verse[:number]}</a></div>"
+          h << "<div class='content text'>#{verse[:text]}</div>"
           h << "</div>"
         end
         h << "</div>"
