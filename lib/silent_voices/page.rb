@@ -1,4 +1,7 @@
 module SilentVoices
+
+  Directory = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
+
   def self.pages
     @pages ||= []
   end
@@ -6,22 +9,8 @@ module SilentVoices
   class Page
     attr_accessor :path, :name, :links, :verses
 
-    def initialize path, name, chapter = nil
-      @path     = path
-      @name     = name
-      @chapter  = chapter
-      @links    = []
-      @verses   = []
+    def initialize *args
       SilentVoices.pages << self
-    end
-
-    def add_link text, href
-      href = '/' == href ? '/index.html' : "/voices#{href}.html"
-      @links << "<a href='#{href}'>#{text}</a>"
-    end
-
-    def add_verse verse
-      @verses << verse
     end
 
     def write
@@ -40,7 +29,7 @@ module SilentVoices
         h << "<div class='next_link'>#{next_link}</div>"
       end
       h << "</body></html>"
-      h.join('\n')
+      h.join("\n")
     end
 
     def prev_link
@@ -60,14 +49,21 @@ module SilentVoices
     end
 
     def self.write_all
+      Dir.mkdir Directory + '/voices' rescue ''
       SilentVoices.pages.each do |page|
-        puts "writing: #{page.name} => #{page.path}"
+        puts "writing: #{page.name} => #{page.filename}"
         page.write
       end
+      puts "Wrote #{SilentVoices.pages.size} pages"
     end
   end
 
   class StartPage < Page
+
+    def initialize
+      super
+    end
+
     def name
       'Silent Voices'
     end
@@ -95,12 +91,21 @@ module SilentVoices
     def path_from(page)
       "../index.html"
     end
+
+    def filename
+      'index.html'
+    end
+
+    def outfile
+      SilentVoices::Directory + '/' + filename
+    end
   end
 
   class BookPage < Page
     attr_accessor :book
     def initialize book
       @book = book
+      super
     end
 
     def prev_page
@@ -138,7 +143,7 @@ module SilentVoices
     end
 
     def path_from(page)
-      page == StartPage ? "voices/#{filename}" : filename
+      page === StartPage ? "voices/#{filename}" : filename
     end
 
     def outfile
@@ -152,6 +157,7 @@ module SilentVoices
     def initialize chapter, book
       @chapter = chapter
       @book = book
+      super
     end
 
     def book_page

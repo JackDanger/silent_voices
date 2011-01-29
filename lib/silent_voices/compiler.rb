@@ -1,6 +1,4 @@
 module SilentVoices
-  Directory = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-
   class Compiler
 
     def initialize source
@@ -29,10 +27,11 @@ module SilentVoices
       end
 
       def write_layout
+        StartPage.new
         @compiled.each do |book|
-          BookPage.create book
+          BookPage.new book
           book[:chapters].each do |chapter|
-            ChapterPage.create chapter, book
+            ChapterPage.new chapter, book
           end
         end
         Page.write_all
@@ -46,7 +45,6 @@ module SilentVoices
           number, name = book.scan(/^ (\d\d) (.*)/).first.flatten
           book         = book[header.size, book.size] # trim the header
           chapters     = yield book
-          puts "chapter size: #{chapters.size}"
           ret << { :name => name,
                    :number => number,
                    :chapters => chapters }
@@ -62,8 +60,7 @@ module SilentVoices
           next_index = string.index /^#{marker.succ}:/
           endpoint = next_index ? next_index : string.size
           verses = yield string[index, endpoint-index]
-          puts "adding chapter #{marker}"
-          ret << {:number => marker,
+          ret << {:number => marker.dup,
                   :verses => verses}
           marker.succ!
         end while next_index
@@ -79,7 +76,7 @@ module SilentVoices
           next_index = string.index /^\d\d\d:#{marker.succ}/
           endpoint = next_index ? next_index : string.size
           text = yield string[index + line.size, endpoint - index - line.size]
-          ret << {:number => marker,
+          ret << {:number => marker.dup,
                   :text   => text}
           marker.succ!
         end while next_index

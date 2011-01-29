@@ -6,4 +6,5 @@ require File.expand_path File.join(File.dirname(__FILE__), 'lib', 'silent_voices
 desc "Build the project"
 task :build do
   SilentVoices::Compiler.new(File.read GUTENBERG_SOURCE).process
+  exec 'open index.html'
 end
