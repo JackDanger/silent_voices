@@ -18,16 +18,24 @@ module SilentVoices
     end
 
     def template
-      h = ["<html><body>"]
+      stylesheet_path = is_a?(StartPage) ? 'style.css' : '../style.css'
+      h = []
+      h << "<html><head>"
+      h << "<link href='#{stylesheet_path}' media='screen' rel='stylesheet' type='text/css' />"
+      h << "</head><body>"
+      h << "<div class='content'>"
       unless is_a?(StartPage)
         h << "<div class='prev_link'>#{prev_link}</div>"
+        h << "<div class='home_link'>Home</div>"
         h << "<div class='next_link'>#{next_link}</div>"
       end
       yield h
       unless is_a?(StartPage)
         h << "<div class='prev_link'>#{prev_link}</div>"
+        h << "<div class='home_link'>Home</div>"
         h << "<div class='next_link'>#{next_link}</div>"
       end
+      h << "</div>"
       h << "</body></html>"
       h.join("\n")
     end
