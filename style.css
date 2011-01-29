@@ -2,7 +2,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Tinos, Helvetica, Georgia;
 }
 
 div.content {
@@ -22,8 +21,32 @@ div.next_link {
 div.prev_link a,
 div.home_link a,
 div.next_link a {
-  color: #444;
+  font-family: 'Bentham', Helvetica, serif;
+  font-size: 1.3em;
+  color: #666;
   text-decoration: none;
 }
 
-p.verse span.number { font-family: 'Bentham', arial, serif; }
+h2 {
+  font-family: Neuton, Helvetica, serif;
+  
+}
+
+.verse {
+  float: left;
+  clear: both;
+  margin-top: 0.25em;
+}
+.verse .number {
+  font-family: 'Bentham', Helvetica, serif;
+  font-size: 1.2em;
+  float: left;
+  clear: left;
+  width: 40px;
+}
+.verse .text {
+  font-family: Neuton, Helvetica, Georgia;
+  float: left;
+  clear: right;
+  width: 679px;
+}
