@@ -6,6 +6,13 @@ module SilentVoices
     @pages ||= []
   end
 
+  def start_page
+    @start_page
+  end
+  def start_page= page
+    @start_page = page
+  end
+
   class Page
     attr_accessor :path, :name, :links, :verses
 
@@ -23,18 +30,18 @@ module SilentVoices
       h << "<html><head>"
       h << "<link href='#{stylesheet_path}' media='screen' rel='stylesheet' type='text/css' />"
       h << "<link href='http://fonts.googleapis.com/css?family=Bentham' rel='stylesheet' type='text/css'>"
-      h << "<link href='http://fonts.googleapis.com/css?family=Tinos' rel='stylesheet' type='text/css'>"
+      h << "<link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>"
       h << "</head><body>"
       h << "<div class='content'>"
       unless is_a?(StartPage)
         h << "<div class='prev_link'>#{prev_link}</div>"
-        h << "<div class='home_link'>Home</div>"
+        h << "<div class='home_link'><a href='#{SilentVoices.start_page.path_from(self)}'>Home</a></div>"
         h << "<div class='next_link'>#{next_link}</div>"
       end
       yield h
       unless is_a?(StartPage)
         h << "<div class='prev_link'>#{prev_link}</div>"
-        h << "<div class='home_link'>Home</div>"
+        h << "<div class='home_link'><a href='#{SilentVoices.start_page.path_from(self)}'>Home</a></div>"
         h << "<div class='next_link'>#{next_link}</div>"
       end
       h << "</div>"
@@ -73,6 +80,7 @@ module SilentVoices
 
     def initialize
       super
+      SilentVoices.start_page = self
     end
 
     def name
@@ -204,9 +212,9 @@ module SilentVoices
         h << "<h2 class='chapter'>#{name}</h2>"
         h << "<div class='chapter'>"
         verses.each do |verse|
-          h << "<p class='verse'>"
-          h << "<span class='number'>#{verse[:number]}</span><span class='text'>#{verse[:text]}</span>"
-          h << "</p>"
+          h << "<div class='verse'>"
+          h << "<div class='number'>#{verse[:number]}</div><div class='text'>#{verse[:text]}</div>"
+          h << "</div>"
         end
         h << "</div>"
       end
