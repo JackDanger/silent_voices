@@ -1,6 +1,9 @@
 module SilentVoices
   module Gender
     def self.forms
+      common.merge(names)
+    end
+    def self.common
       {
         'man' =>         'woman',
         'men' =>         'women',
@@ -51,6 +54,11 @@ module SilentVoices
         'Matt' =>        'Mattie',
         'David' =>       'Davida',
         'Paul' =>        'Paula'
+      }
+    end
+    def self.names
+      {
+        'Jesus' => 'Jesas'
       }
     end
   end

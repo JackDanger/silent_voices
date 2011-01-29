@@ -43,6 +43,8 @@ module SilentVoices
           next unless book =~ /^ (\d\d) (.*)/
           header       = book[/^ (\d\d) (.*)/]
           number, name = book.scan(/^ (\d\d) (.*)/).first.flatten
+          puts ''
+          print "compiling: #{name} "
           book         = book[header.size, book.size] # trim the header
           chapters     = yield book
           ret << { :name => name,
@@ -56,6 +58,8 @@ module SilentVoices
         marker = '001'
         ret = []
         begin
+          print '.'
+          STDOUT.flush
           index = string.index /^#{marker}:/
           next_index = string.index /^#{marker.succ}:/
           endpoint = next_index ? next_index : string.size
@@ -84,17 +88,16 @@ module SilentVoices
       end
 
       def normalize string
-        return string
         string.gsub(/[\s\n]+/, ' ').sub(/^[\s\n]|[\s\n]$/, '')
       end
 
       def strip_comments string
-        return string
-        string.gsub /(.*)(\{.*\})(.*)/, '\1\3'
+        string = string.gsub /(.*)(\{.*\})(.*)/, '\1\3'
+        string = string.gsub /\[(.*)\]/, '\1'
+        string
       end
 
       def feminize string
-        return string
         Feminizer.feminize_text string
       end
 
