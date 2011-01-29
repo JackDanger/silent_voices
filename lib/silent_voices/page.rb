@@ -51,7 +51,6 @@ module SilentVoices
     def self.write_all
       Dir.mkdir Directory + '/voices' rescue ''
       SilentVoices.pages.each do |page|
-        puts "writing: #{page.name} => #{page.filename}"
         page.write
       end
       puts "Wrote #{SilentVoices.pages.size} pages"
@@ -99,6 +98,11 @@ module SilentVoices
     def outfile
       SilentVoices::Directory + '/' + filename
     end
+
+    def write
+      puts "writing: #{name} => #{filename}"
+      super
+    end
   end
 
   class BookPage < Page
@@ -109,11 +113,11 @@ module SilentVoices
     end
 
     def prev_page
-      @prev_page ||= SilentVoices.pages.detect {|page| BookPage === page && decrement_string(number) == page.number }
+      @prev_page ||= SilentVoices.pages.detect {|page| page.is_a?(BookPage) && decrement_string(number).eql?(page.number) }
     end
 
     def next_page
-      @next_page ||= SilentVoices.pages.detect {|page| BookPage === page && increment_string(number) == page.number }
+      @next_page ||= SilentVoices.pages.detect {|page| page.is_a?(BookPage) && increment_string(number).eql?(page.number) }
     end
 
     def chapter_pages
@@ -143,11 +147,17 @@ module SilentVoices
     end
 
     def path_from(page)
-      page === StartPage ? "voices/#{filename}" : filename
+      page.is_a?(StartPage) ? "voices/#{filename}" : filename
     end
 
     def outfile
       SilentVoices::Directory + '/voices/' + filename
+    end
+
+    def write
+      puts ''
+      print "writing: #{name} => "
+      super
     end
   end
 
@@ -201,11 +211,17 @@ module SilentVoices
     end
 
     def path_from(page)
-      page == StartPage ? "voices/#{filename}" : filename
+      page.is_a?(StartPage) ? "voices/#{filename}" : filename
     end
 
     def outfile
       SilentVoices::Directory + '/voices/' + filename
+    end
+
+    def write
+      print '.'
+      STDOUT.flush
+      super
     end
   end
 end
