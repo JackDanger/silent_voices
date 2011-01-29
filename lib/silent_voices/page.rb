@@ -96,7 +96,7 @@ module SilentVoices
     def html
       template do |h|
         h << '<h1>Silent Voices</h1>'
-        h << '<h3>"If God is male then male is God." -- Mary Daly</h3>'
+        h << "<h3 class='quote'>\"If God is male then male is God.\" -- Mary Daly</h3>"
         h << "<ul class='links books'>"
         book_pages.each do |book|
           h << "<li><a href='#{book.path_from(self)}'>#{book.name}</a></li>"
@@ -118,7 +118,8 @@ module SilentVoices
     end
 
     def write
-      puts "writing: #{name} => #{filename}"
+      puts ''
+      print "writing: #{name} => #{filename}"
       super
     end
   end

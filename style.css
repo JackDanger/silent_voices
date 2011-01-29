@@ -27,9 +27,12 @@ div.next_link a {
   text-decoration: none;
 }
 
-h2 {
+h1, h2, h3 {
   font-family: Neuton, Helvetica, serif;
-  
+  text-align: center;
+}
+h3.quote {
+  color: #999;
 }
 
 .verse {
