@@ -6,10 +6,10 @@ module SilentVoices
     @pages ||= []
   end
 
-  def start_page
+  def self.start_page
     @start_page
   end
-  def start_page= page
+  def self.start_page= page
     @start_page = page
   end
 
