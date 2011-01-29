@@ -17,7 +17,6 @@ module SilentVoices
 
       def compile
         each_book do |book_text|
-          puts "#{book_text[0, 35]}"
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
               verse = normalize       verse
@@ -30,20 +29,10 @@ module SilentVoices
       end
 
       def write_layout
-        start = Page.new('/', 'Silent Voices')
         @compiled.each do |book|
-          book_name = "#{book[:number]} #{book[:name]}"
-          path = "/#{book[:number]}"
-          start.add_link(book_name, path)
-          book_page = Page.new(path, book_name)
-          puts "final chapter size: #{book[:chapters].size}"
+          BookPage.create book
           book[:chapters].each do |chapter|
-            puts chapter[:number]
-            path = "/#{book[:number]}-#{chapter[:number]}"
-            chapter_page = Page.new(path, "#{book_name}", chapter[:number].to_i)
-            chapter[:verses].each do |verse|
-              chapter_page.add_verse verse
-            end
+            ChapterPage.create chapter, book
           end
         end
         Page.write_all
