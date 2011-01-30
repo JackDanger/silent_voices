@@ -8,3 +8,9 @@ task :build do
   SilentVoices::Compiler.new(File.read GUTENBERG_SOURCE).process
   exec 'open index.html'
 end
+
+task :deploy do
+  system %Q{git push github master}
+  system %Q{ssh 9suits.com "cd /www/silentvoicesbible.com; git pull"}
+
+end
