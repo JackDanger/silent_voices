@@ -65,6 +65,10 @@ module SilentVoices
       string.succ
     end
 
+    def facebook_like
+      %Q{<div id="facebook_like"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsilentvoicesbible.com/#{path_from(SilentVoices.start_page)}&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:35px;" allowTransparency="true"></iframe></div>}
+    end
+
     def self.write_all
       Dir.mkdir Directory + '/voices' rescue ''
       SilentVoices.pages.each do |page|
@@ -107,6 +111,7 @@ module SilentVoices
           h << "<div class='content'><a href='#{book.path_from(self)}'>#{book.name}</a></div>"
           h << "</div>"
         end
+        h << facebook_like
         h << "</div>"
       end
     end
@@ -159,7 +164,8 @@ module SilentVoices
           h << "<div class='content chapter_preview'><a href='#{chapter.path_from(self)}'>#{chapter.verses.first[:text].to_s[0, 45]}[...]</a></div>"
           h << "</div>"
         end
-        h << "</ul>"
+        h << facebook_like
+        h << "</div"
       end
     end
 
@@ -200,7 +206,7 @@ module SilentVoices
     end
 
     def book_page
-      @book_page ||= SilentVoices.pages.detect {|page| @book[:number] == page.number }
+      @book_page ||= SilentVoices.pages.detect {|page| @book[:name] == page.name }
     end
 
     def prev_page
@@ -217,7 +223,7 @@ module SilentVoices
 
     def html
       template do |h|
-        h << "<h2 class='chapter'>#{name}</h2>"
+        h << "<h2 class='chapter'><a href='#{book_page.path_from(self)}'>#{@book[:name]}</a> #{number}</h2>"
         h << "<div class='entries chapter'>"
         verses.each do |verse|
           h << "<div class='entry verse'>"
@@ -226,6 +232,8 @@ module SilentVoices
           h << "</div>"
         end
         h << "</div>"
+        h << facebook_like
+        h << "<div class='back_to_book'><a href='#{book_page.path_from(self)}'>#{book_page.name}</a></div>"
       end
     end
 
