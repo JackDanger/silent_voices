@@ -170,11 +170,11 @@ module SilentVoices
     end
 
     def name
-      @book[:name]
+      book[:name]
     end
 
     def number
-      @book[:number]
+      book[:number]
     end
 
     def filename
@@ -206,7 +206,7 @@ module SilentVoices
     end
 
     def book_page
-      @book_page ||= SilentVoices.pages.detect {|page| @book[:name] == page.name }
+      @book_page ||= SilentVoices.pages.detect {|page| book[:name] == page.name }
     end
 
     def prev_page
@@ -238,7 +238,7 @@ module SilentVoices
     end
 
     def name(num = number)
-      "#{@book[:name]} #{num}"
+      "#{book[:name]} #{num}"
     end
 
     def number
@@ -250,7 +250,7 @@ module SilentVoices
     end
 
     def filename
-      "#{@book[:number]}-#{@book[:name].downcase.gsub(' ', '_')}-#{number}.html"
+      "#{book[:number]}-#{book[:name].downcase.gsub(' ', '_')}-#{number}.html"
     end
 
     def path_from(page)
