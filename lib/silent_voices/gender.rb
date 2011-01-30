@@ -49,8 +49,13 @@ module SilentVoices
     def names
       {
         # 'Matt' =>        'Matta',
-        # 'David' =>       'Davia',
         # 'Jesus' =>       'Jesas',
+        'Noah' =>        'Noa',
+        'David' =>       'Davina',
+        'Samuel' =>      'Samantha',
+        'Herod'  =>      'Heroda',
+        'James' =>       'Jamie',
+        'Daniel' =>      'Danielle',
         'Paul' =>        'Paula'
       }
     end

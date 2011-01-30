@@ -78,6 +78,19 @@ div.entry .content {
   width: 679px;
 }
 
+div.entry.book {
+  clear: none;
+}
+div.entry.book .content {
+  font-size: 1.4em;
+  width: 202px;
+  clear: none;
+}
+div.entry.book .anchor {
+  width: 30px;
+  line-height: 2.5em;
+  clear: none;
+}
 div.entry.chapter .anchor {
   width: 120px;
 }
