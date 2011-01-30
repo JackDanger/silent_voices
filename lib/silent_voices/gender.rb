@@ -71,7 +71,7 @@ module SilentVoices
 
     def fix_singletons string
       string = string.gsub 'an philanderer', 'a philanderer'
-      string = string.gsub 'touch his will', 'touch him will'
+      string = string.gsub 'touches his will', 'touches him will'
       string
     end
 
