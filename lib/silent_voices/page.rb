@@ -1,6 +1,7 @@
 module SilentVoices
 
-  Directory = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
+  Directory      = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
+  ViewsDirectory = File.expand_path(File.join(File.dirname(__FILE__), '..', 'views'))
 
   def self.pages
     @pages ||= []
@@ -69,6 +70,12 @@ module SilentVoices
       %Q{<div id="facebook_like"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsilentvoicesbible.com/#{path_from(SilentVoices.start_page)}&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:35px;" allowTransparency="true"></iframe></div>}
     end
 
+    def render
+      Haml::Engine.new(File.read(ViewsDirectory + '/template.haml')).render(self) {
+        Haml::Engine.new(File.read(ViewsDirectory + view_file)).render(self)
+      }
+    end
+
     def self.write_all
       Dir.mkdir Directory + '/voices' rescue ''
       SilentVoices.pages.each do |page|
@@ -126,6 +133,10 @@ module SilentVoices
 
     def outfile
       SilentVoices::Directory + '/' + filename
+    end
+
+    def view_file
+      'index.haml'
     end
 
     def write
@@ -187,6 +198,10 @@ module SilentVoices
 
     def outfile
       SilentVoices::Directory + '/voices/' + filename
+    end
+
+    def view_file
+      'book.haml'
     end
 
     def write
@@ -259,6 +274,10 @@ module SilentVoices
 
     def outfile
       SilentVoices::Directory + '/voices/' + filename
+    end
+
+    def view_file
+      'chapter.haml'
     end
 
     def write
