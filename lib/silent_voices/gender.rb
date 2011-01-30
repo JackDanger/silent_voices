@@ -16,10 +16,13 @@ module SilentVoices
         'men' =>         'women',
         'manhood' =>     'womanhood',
         'male' =>        'female',
+        'males' =>       'females',
         'patriarch' =>   'matriarch',
         'patrimony' =>   'matrimony',
         'boy' =>         'girl',
         'boys' =>        'girls',
+        'son' =>         'daughter',
+        'sons' =>        'daughters',
         'he' =>          'she',
         'his' =>         'hers',
         'him' =>         'her',
@@ -43,18 +46,20 @@ module SilentVoices
     end
     def self.names
       {
-        'Matt' =>        'Matta',
-        'David' =>       'Davia',
-        'Paul' =>        'Paula',
-        'Jesus' =>       'Jesas'
+        # 'Matt' =>        'Matta',
+        # 'David' =>       'Davia',
+        # 'Jesus' =>       'Jesas',
+        'Paul' =>        'Paula'
       }
     end
     def self.cleanup_her string
       # The fact that 'her' is the opposite of both 'his' and 'him' is problematic.
       # Cleanup misswaps here
       string.
-        gsub(/him wife/, 'his wife').
-        gsub(/of hers /, 'of her ')
+        gsub(/him (wife|iniquity)/i, 'his \1').
+        gsub(/(her)s (own|husband|brother|sister|daughters|sons|service|burden|charge|division|army)/i, '\1 \2').
+        gsub(/in hers/, 'in her').
+        gsub(/of hers/, 'of her')
     end
   end
 end
