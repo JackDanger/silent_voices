@@ -98,7 +98,7 @@ module SilentVoices
       end
 
       def feminize string
-        Feminizer.feminize_text string
+        Gender.feminize_text string
       end
 
       def set_feminizing_forms
