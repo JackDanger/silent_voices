@@ -18,6 +18,8 @@ module SilentVoices
         'manhood' =>     'womanhood',
         'male' =>        'female',
         'males' =>       'females',
+        'bride' =>       'groom',
+        'bridegroom' =>  'groombride',
         'patriarch' =>   'matriarch',
         'patrimony' =>   'matrimony',
         'boy' =>         'girl',
