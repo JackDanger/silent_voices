@@ -7,5 +7,6 @@
         Chapter
         = chapter.number.to_i
       .content.chapter_preview
-        %a{:href => chapter.path_from(page)}= chapter.verses.first[:text].to_s[0, 45]}[...]
-= facebook_like
+        %a{:href => chapter.path_from(self)}
+          = chapter.verses.first[:text].to_s[0, 45]
+          [...]

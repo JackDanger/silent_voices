@@ -7,5 +7,4 @@
     .entry.book
       .anchor= book.number
       .content
-        %a{:href => book.path_from(page)}= book.name
-= facebook_like
+        %a{:href => book.path_from(self)}= book.name
