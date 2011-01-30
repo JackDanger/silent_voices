@@ -5,12 +5,14 @@ module SilentVoices
     def feminize_text string
       string = Feminizer.feminize_text string
       string = cleanup_her string
+      string = fix_philanderer string
       string
     end
 
     def forms
       common.merge names
     end
+
     def common
       {
         'man' =>         'woman',
@@ -61,6 +63,10 @@ module SilentVoices
         'Daniel' =>      'Danielle',
         'Paul' =>        'Paula'
       }
+    end
+
+    def fix_philanderer string
+      string.gsub 'an philanderer', 'a philanderer'
     end
 
     def cleanup_her string
