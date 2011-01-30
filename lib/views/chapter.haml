@@ -1,0 +1,11 @@
+%h2.chapter
+  %a{:href => page.book_page.path_from(page)}= page.book[:name]
+  = page.number
+.entries.chapter
+  - page.verses.each do |verse|
+    .entry.verse
+      .anchor.number
+        %a{:name => verse[:number], :href => verse[:number]}= verse[:number]
+    .content.text= verse[:text]
+= page.facebook_like
+

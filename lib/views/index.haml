@@ -1,0 +1,11 @@
+
+%h1 Silent Voices Bible
+%h3.quote "If God is male then male is God." -- Mary Daly
+
+.entries.books
+  - page.book_pages.each do |book|
+    .entry.book
+      .anchor= book.number
+      .content
+        %a{:href => book.path_from(page)}= book.name
+= page.facebook_like

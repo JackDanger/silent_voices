@@ -1,0 +1,11 @@
+%h2.book= page.name
+
+.entries.chapters
+  - page.chapter_pages.each do |chapter|
+    .entry.chapter
+      .anchor
+        Chapter
+        = chapter.number.to_i
+      .content.chapter_preview
+        %a{:href => chapter.path_from(page)}= chapter.verses.first[:text].to_s[0, 45]}[...]
+= page.facebook_like
