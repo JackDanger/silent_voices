@@ -1,0 +1,46 @@
+!!! 1.1
+%html{ :xmlns => "http://www.w3.org/1999/xhtml",  'xmlns:fb' => "http://www.facebook.com/2008/fbml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %meta{ :name => 'google-site-verification', :content => 'tlUTVmiUzNZK97q42kXPczZLEILUOWEexFMRY0kbvv0' }
+    %link{ :href => page.stylesheet_path, :media => 'screen', :rel => 'stylesheet', :type => 'text/css'}
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Bentham', :media => 'screen', :rel => 'stylesheet', :type => 'text/css'}
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Neuton', :media => 'screen', :rel => 'stylesheet', :type => 'text/css'}
+  %body
+
+    .container
+
+      - nav = capture do
+        .nav
+          .prev_link= page.prev_link
+          .home_link
+            %a{:href =>'index.html'} Silent Voices
+          .next_link= page.next_link
+
+      - unless page.is_a?(StartPage)
+        = nav
+
+      = yield
+
+      - unless page.is_a?(StartPage)
+        = nav
+
+
+    .footer
+      Created by
+      = succeed ',' do
+        %a{: href => "http://jackcanty.com"} Jack
+      send corrections and feedback to
+      %em silentvoices at jackcanty dot com
+
+
+  %script{:type=>"text/javascript"}
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-331450-16']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
