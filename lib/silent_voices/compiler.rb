@@ -17,7 +17,6 @@ module SilentVoices
         each_book do |book_text|
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
-              verse = normalize       verse
               verse = strip_comments  verse
               verse = feminize        verse
               verse
@@ -87,10 +86,6 @@ module SilentVoices
         ret
       end
 
-      def normalize string
-        string.gsub(/[\s\n]+/, ' ').sub(/^[\s\n]|[\s\n]$/, '')
-      end
-
       def strip_comments string
         string = string.gsub /(.*)(\{.*\})(.*)/, '\1\3'
         string = string.gsub /\[(.*)\]/, '\1'
@@ -98,7 +93,7 @@ module SilentVoices
       end
 
       def feminize string
-        Feminizer.feminize_text string
+        Gender.feminize_text string
       end
 
       def set_feminizing_forms
