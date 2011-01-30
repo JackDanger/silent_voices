@@ -30,6 +30,7 @@ module SilentVoices
         'his' =>         'hers',
         'him' =>         'her',
         'himself' =>     'herself',
+        'adulteress' =>  'philanderer',
         'craftsman' =>   'craftswoman',
         'husband' =>     'wife',
         'husbands' =>    'wives',
