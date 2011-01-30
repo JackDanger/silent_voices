@@ -5,7 +5,7 @@ module SilentVoices
     def feminize_text string
       string = Feminizer.feminize_text string
       string = cleanup_her string
-      string = fix_philanderer string
+      string = fix_singletons string
       string
     end
 
@@ -69,8 +69,10 @@ module SilentVoices
       }
     end
 
-    def fix_philanderer string
-      string.gsub 'an philanderer', 'a philanderer'
+    def fix_singletons string
+      string = string.gsub 'an philanderer', 'a philanderer'
+      string = string.gsub 'touch his will', 'touch him will'
+      string
     end
 
     def cleanup_her string
