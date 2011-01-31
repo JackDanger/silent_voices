@@ -14,14 +14,15 @@
 
     = yield
 
-    #footer.row
-      .column.grid_9
-        Created by
-        = succeed ',' do
-          %a{:href => "http://jackcanty.com"} Jack
-        send corrections and feedback to
-        %em
-          %a{:href => 'mailto:speak@silentvoices.com'}speak @ silentvoices.com
+    .row
+      #footer
+        .column.grid_9
+          Created by
+          = succeed ',' do
+            %a{:href => "http://jackcanty.com"} Jack
+          send corrections and feedback to
+          %em
+            %a{:href => 'mailto:speak@silentvoices.com'}speak @ silentvoices.com
 
 
     %script{:type => "text/javascript"}
