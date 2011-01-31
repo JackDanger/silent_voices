@@ -1,8 +1,9 @@
 module SilentVoices
   class Compiler
 
-    def initialize source
+    def initialize source, level
       @source = source
+      @level = level
       set_feminizing_forms
     end
 
@@ -13,7 +14,12 @@ module SilentVoices
 
     protected
 
+      def run_books?
+        'books' == @level
+      end
+
       def compile
+        return [] unless run_books?
         each_book do |book_text|
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
@@ -28,11 +34,13 @@ module SilentVoices
 
       def write_layout
         StartPage.new
-        IndexPage.new
-        @compiled.each do |book|
-          BookPage.new book
-          book[:chapters].each do |chapter|
-            ChapterPage.new chapter, book
+        if run_books?
+          IndexPage.new
+          @compiled.each do |book|
+            BookPage.new book
+            book[:chapters].each do |chapter|
+              ChapterPage.new chapter, book
+            end
           end
         end
         Page.write_all

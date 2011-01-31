@@ -20,4 +20,4 @@
           - groups.each do |name, books|
             .group
               %h3= name
-              = books.map {|book| "<a href='#{book.path_from(self)}' class='book_name_link'>#{book.name}</a>" }.join(', ')
+              = books.map {|book| "<a href='#{book.path_from(self)}' class='book_name_link'>#{book.name}</a>" }.join(', &nbsp; ')
