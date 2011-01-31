@@ -86,7 +86,7 @@ xfbml: true});
     def next_page; nil; end
 
     def path_from(page)
-      "../index.html"
+      page == self ? 'index.html' :  "../index.html"
     end
 
     def stylesheet_path

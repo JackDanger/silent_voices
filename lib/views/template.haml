@@ -20,7 +20,7 @@
         %em silentvoices at jackcanty dot com
 
 
-  %script{:type=>"text/javascript"}
+  %script{:type => "text/javascript"}
     :erb
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-331450-16']);
@@ -30,10 +30,11 @@
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-
-        FB.Event.subscribe('edge.create', function(href, widget) {
-        console.log('trying')
-        console.log(pageTracker._trackEvent('facebook','like', href));
-        });
       })();
 
+  %script{:type => 'text/javascript'}
+    :erb
+      FB.Event.subscribe('edge.create', function(href, widget) {
+        console.log(href, widget)
+        _gaq.push(['_trackEvent', 'facebook', 'like', href])
+      });
