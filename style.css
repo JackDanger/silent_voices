@@ -172,7 +172,7 @@ div#facebook_like {
   color: #333;
 }
 #index_page a.book_name_link:before {
-  content: ' · ';
+  content: ' • ';
 }
 
 /* navigation */
