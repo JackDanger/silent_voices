@@ -1,15 +1,19 @@
-.header
-  .inner
-    .home_link
-      %a{:href =>'../index.html'} Silent Voices
+#header
+  .row
+    .column.grid_9
+      .home_link
+        %a{:href =>'../index.html'} Silent Voices
 
-.container
+#container.row
+  #facebook_like
+    %iframe{:src => "http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsilentvoicesbible.com/#{path_from(SilentVoices.start_page)}&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35", :scrolling => "no", :frameborder => "0", :style => "border:none; overflow:hidden; width:120px; height:35px;", :allowTransparency => "true"}
 
-  %h2 Silent Voices Bible
+  .column.grid_9
+    %h2 Silent Voices Bible
 
   .entries.books
     - book_pages.each do |book|
-      .entry.book
+      .entry.book.column.grid_3
         .anchor= book.number
         .content
           %a{:href => book.path_from(self)}= book.name

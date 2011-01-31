@@ -86,8 +86,9 @@ h1, h2, h3 {
 }
 div#facebook_like {
   position: absolute;
-  right: 0px;
-  top: 136px;
+  right: -25px;
+  top: 0px;
+  text-align: right;
 }
 
 #footer {
@@ -119,6 +120,10 @@ div#facebook_like {
 #start_page .quote {
   font-size: 32px;
   text-align: right;
+}
+#start_page ul {
+  font-size: 1.3em;
+  line-height: 1.6em;
 }
 
 /* navigation */
@@ -172,11 +177,9 @@ div.entry.book {
 }
 div.entry.book .content {
   font-size: 1.4em;
-  width: 202px;
   clear: none;
 }
 div.entry.book .anchor {
-  width: 30px;
   line-height: 2.5em;
   clear: none;
 }

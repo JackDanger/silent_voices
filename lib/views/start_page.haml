@@ -5,6 +5,8 @@
         %h1 Silent Voices
 
   #container.row
+    #facebook_like
+      %iframe{:src => "http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsilentvoicesbible.com/#{path_from(SilentVoices.start_page)}&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35", :scrolling => "no", :frameborder => "0", :style => "border:none; overflow:hidden; width:120px; height:35px;", :allowTransparency => "true"}
     #explanation.box.column.grid_5
       %h2 What is Silent Voices?
       %p
@@ -34,7 +36,6 @@
           %a{:href => 'voices/.html'} A Virtuous Man
         %li
           %a{:href => 'voices/40-matthew-005.html'} The Beautitudes
-        %li
 
 
     .column.grid_9
@@ -53,10 +54,24 @@
 
     .box.column.grid_6
       %p
-        The Christian bible is the most beloved text in the world;
-        cherished by billions and central to religious and
-        communal tradition. I, as a man, find my gender reflected through
-        characters I can relate to.
-        %a{:href => 'voices/index.html'} The Silent Voices Bible
-        is a project to offer that same experience to the
-        billions of faithful Christian women.
+        %a{:name => 'read_on'}
+        The Silent Voices Bible is the Holy Christian Bible with the gender of each
+        character swapped &mdash; including God. Male roles are played by women, and female
+        roles are played by men. I have left all gender-specific behavior (like reproduction)
+        untouched so there is some dissonance when you read about men giving birth or
+        women spilling their seed. I have also left all the character names the same with a few
+        exceptions: King David is Queen Davina, and the prophet Samuel is now Samantha.
+      %h2 Wait, is even God a woman?
+      %p
+        God is already referred to with feminine qualities in the bible. This project just changes the 
+        %em default
+        perception of God's gender.
+      %h2 This is an insult to God!
+      %p
+        The Silent Voices Bible is not an insult to God, it's an experiential theology.
+        As you read it you will have an opinion about how this bible differs from what
+        you've read before. The challenge is to pay attention to times that you feel
+        as if the stories and people you're familiar with have been lessened by becoming
+        female. Because the belief that a female is lesser
+        %em is
+        an insult to God.
