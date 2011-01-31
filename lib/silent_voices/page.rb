@@ -76,7 +76,7 @@ xfbml: true});
   class StartPage < Page
     def initialize
       super
-      SilentVoices.index_page = self
+      SilentVoices.start_page = self
     end
 
     def name
@@ -86,7 +86,7 @@ xfbml: true});
     def next_page; nil; end
 
     def path_from(page)
-      page == self ? 'index.html' :  "../index.html"
+      page.is_a?(StartPage) ? 'index.html' :  "../ddindex.html"
     end
 
     def stylesheet_path
@@ -112,7 +112,7 @@ xfbml: true});
 
     def initialize
       super
-      SilentVoices.start_page = self
+      SilentVoices.index_page = self
     end
 
     def name
