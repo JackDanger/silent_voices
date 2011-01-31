@@ -25,6 +25,10 @@ task :live do
   exec 'open http://silentvoicesbible.com/'
 end
 
+task :blog do
+  exec ''
+end
+
 task :deploy do
   system %Q{git commit voices index.html -m "building"}
   system %Q{git push github master}
