@@ -28,6 +28,7 @@ module SilentVoices
 
       def write_layout
         StartPage.new
+        IndexPage.new
         @compiled.each do |book|
           BookPage.new book
           book[:chapters].each do |chapter|
@@ -50,6 +51,7 @@ module SilentVoices
           ret << { :name => name,
                    :number => number,
                    :chapters => chapters }
+          return ret if ret.size > 1
         end
         ret
       end

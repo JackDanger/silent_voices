@@ -14,6 +14,13 @@ module SilentVoices
     @start_page = page
   end
 
+  def self.index_page
+    @index_page
+  end
+  def self.index_page= page
+    @index_page = page
+  end
+
   class Page
     attr_accessor :path, :name, :links, :verses
 
@@ -55,10 +62,9 @@ module SilentVoices
   end
 
   class StartPage < Page
-
     def initialize
       super
-      SilentVoices.start_page = self
+      SilentVoices.index_page = self
     end
 
     def name
@@ -66,14 +72,6 @@ module SilentVoices
     end
     def prev_page; nil; end
     def next_page; nil; end
-
-    def outfile
-      SilentVoices::Directory + '/index.html'
-    end
-
-    def book_pages
-      @book_pages ||= SilentVoices.pages.select {|page| BookPage === page }.sort_by(&:number)
-    end
 
     def path_from(page)
       "../index.html"
@@ -83,16 +81,50 @@ module SilentVoices
       'style.css'
     end
 
-    def filename
-      'index.html'
+    def view_file
+      'start_page.haml'
     end
 
     def outfile
-      SilentVoices::Directory + '/' + filename
+      SilentVoices::Directory + '/index.html'
+    end
+  end
+
+  class IndexPage < Page
+
+    def initialize
+      super
+      SilentVoices.start_page = self
+    end
+
+    def name
+      'Silent Voices Bible'
+    end
+    def prev_page; nil; end
+    def next_page; nil; end
+
+    def outfile
+      SilentVoices::Directory + '/voices/index.html'
+    end
+
+    def book_pages
+      @book_pages ||= SilentVoices.pages.select {|page| BookPage === page }.sort_by(&:number)
+    end
+
+    def path_from(page)
+      page.is_a?(StartPage) ? 'voices/index.html' : 'index.html'
+    end
+
+    def outfile
+      SilentVoices::Directory + '/voices/index.html'
     end
 
     def view_file
       'index.haml'
+    end
+
+    def stylesheet_path
+      '../style.css'
     end
 
     def write
