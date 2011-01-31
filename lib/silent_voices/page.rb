@@ -53,6 +53,10 @@ module SilentVoices
       '../style.css'
     end
 
+    def title
+      "The Feminist Bible "
+    end
+
     def facebook_like
       %Q{<div id="fb-root"></div>
 <script>
@@ -93,6 +97,10 @@ xfbml: true});
       'style.css'
     end
 
+    def title
+      super + '- the bible for a billion women'
+    end
+
     def view_file
       'start_page.haml'
     end
@@ -118,6 +126,10 @@ xfbml: true});
     def name
       'Silent Voices Bible'
     end
+    def title
+      'Feminist Bible Translation'
+    end
+
     def prev_page; nil; end
     def next_page; nil; end
 
@@ -200,6 +212,10 @@ xfbml: true});
       book[:number]
     end
 
+    def title
+      super + "- #{name}"
+    end
+
     def filename
       "#{number}-#{name.downcase.gsub(' ', '_')}.html"
     end
@@ -258,6 +274,10 @@ xfbml: true});
 
     def verses
       @chapter[:verses]
+    end
+
+    def title
+      super + "- #{name}"
     end
 
     def filename
