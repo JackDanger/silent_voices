@@ -42,6 +42,7 @@ body {
 
 a {
   text-decoration: none;
+  color: #55F;
 }
 a:hover {
   text-decoration: underline;
@@ -145,11 +146,16 @@ div#facebook_like {
 /* start page */
 #start_page .quote {
   font-size: 32px;
+  margin-bottom: 1em;
   text-align: right;
+}
+#start_page h2 {
+  margin: 0.25em 0 0 0;
 }
 #start_page ul {
   font-size: 1.3em;
   line-height: 1.6em;
+  margin-top: 0.5em;
 }
 
 /* Index Page */
@@ -166,10 +172,11 @@ div#facebook_like {
   float: left;
   margin-right: 20px;
 }
+#index_page .group h3{
+  color: #0A0;
+}
 #index_page a.book_name_link {
-/*  display: block;*/
   font-size: 1.4em;
-  color: #333;
 }
 
 /* navigation */
