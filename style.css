@@ -138,6 +138,10 @@ div#facebook_like {
   text-align: left;
   color: #0A0;
 }
+#start_page #popular h2,
+#start_page #popular ul {
+  margin-left: 1.5em;
+}
 #start_page #teaser {
   display: none;
   font-size: 2.2em;
