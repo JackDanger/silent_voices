@@ -26,7 +26,7 @@ task :live do
 end
 
 task :blog do
-  exec ''
+  system 'cd _blog_src; jekyll; cd -'
 end
 
 task :deploy do
