@@ -265,7 +265,7 @@ xfbml: true});
     end
 
     def name(num = number)
-      "#{book[:name]} #{num}"
+      "#{book[:name]} #{num.to_i}"
     end
 
     def number
