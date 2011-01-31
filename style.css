@@ -171,9 +171,6 @@ div#facebook_like {
   font-size: 1.4em;
   color: #333;
 }
-#index_page a.book_name_link:before {
-  content: ' • ';
-}
 
 /* navigation */
 
