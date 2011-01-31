@@ -86,6 +86,7 @@ h1, h2, h3 {
   position: relative;
   width: 720px;
   margin: 1em auto;
+  overflow: visible;
 }
 .nav {
 /*  margin: 1em auto 0 auto;*/
@@ -111,7 +112,7 @@ div#facebook_like {
   color: #999;
 }
 
-
+/* Start Page */
 
 #start_page p {
   font-size: 1.2em;
@@ -136,6 +137,11 @@ div#facebook_like {
   text-align: left;
   color: #0A0;
 }
+#start_page #teaser {
+  display: none;
+  font-size: 2.2em;
+  line-height: 1.5em;
+}
 /* start page */
 #start_page .quote {
   font-size: 32px;
@@ -144,6 +150,29 @@ div#facebook_like {
 #start_page ul {
   font-size: 1.3em;
   line-height: 1.6em;
+}
+
+/* Index Page */
+
+#index_page h3 {
+  text-align: left;
+}
+#index_page .testament {
+  float: left;
+  clear: both;
+}
+#index_page .group {
+  width: 320px;
+  float: left;
+  margin-right: 20px;
+}
+#index_page a.book_name_link {
+/*  display: block;*/
+  font-size: 1.4em;
+  color: #333;
+}
+#index_page a.book_name_link:before {
+  content: ' · ';
 }
 
 /* navigation */
