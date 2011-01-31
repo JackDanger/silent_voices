@@ -1,0 +1,27 @@
+---
+layout: post
+title: Unexpected lessons from the bible
+author: Jack
+---
+
+h1. {{page.title}}
+
+
+"All literature is God-breathed and useful for teaching" "2 Timothy 3:16":http://silentvoicesbible.com/voices/55-2_timothy-003.html#016
+
+There are Sunday schools and bible studies across the world that are teaching people how to become familiar with, understand, and even memorize the Christian bible. There's no question that we know the bible, but what do we know exactly? What, other than names, dates and book order, have we learned?
+
+There's a field of study called "hermeneutics" that believes people bring certain ideas _to_ a text before they ever read it. This set of ideas helps us stay interested and come up with questions we want to ask while reading the text. But it also blinds us to parts of the text that are either too familiar or that might conflict with our assumptions. This limits us in our ability to understand the text.
+
+There's a long history of biblical scholasticism, by both academic people and regular people, that has shaped the general way that we think about and approach the bible. When we sit down to read we don't just read the bible because the voices of our pastors, our parents, and even other verses ring in our head and shape our expectations.
+
+One of these ideas, universally accepted by pastors and most academics, is that the God of the Christian Bible is male. Or, if not exclusively male, at least _mostly_ male. So as a man reads the bible he will read himself into the characters of King David, Jesus and even God because there is at least one part of those people (gender) that is part of him too. This is fine.
+
+But when a woman reads the bible she will find that there are very few people like her in the stories. They are always marginal characters and usually only important because one of the male characters thinks so. She can still choose to identify with King David or Jesus but she has to do extra work. And it's likely that she will think God is more like the men she knows than like her.
+
+While Sunday schoolers are memorizing the bible they're also subconsciously memorizing the belief that the bible is a book about men. This is a lesson that they didn't expect to learn and, in the opinion of many, should not have learned.
+
+It takes hard work to overturn centuries of assumptions about gender. Just decades ago it was common knowledge that if a woman ran a mile her heart would burst, that she was predisposed to irrationality, and that her personal satisfaction was tied to the presence of a man in her life. We no longer believe any of these (hopefully) but there's much more to be unlearned.
+
+
+Written by Jack on {{page.date | date: "%B, %Y" }}

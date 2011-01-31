@@ -1,0 +1,16 @@
+---
+layout: post
+title: Making old texts new again
+author: Jack
+---
+
+h1. {{page.title}}
+
+
+A valuable text does not just reflect our current knowledge; it gives us new knowledge. But if the assumptions that we start with prevent us from seeing anything new then we need to work around them. One of the ways to do that is to read a text with a diverse group of people. Another is to read it while looking for a specific theme that you haven't paid attention to before. Another is to change the text itself, swapping some words with synonyms or even rearranging the order of things so that an old text becomes vibrantly new.
+
+The Silent Voices Bible uses this third option. It's a meticulous swapping of all gendered words throughout the whole text. This isn't because the original text was somehow wrong and needed to be edited, but a way of refreshing our eyes as we look at something thousands of years old.
+
+This rewording of the Bible is useful research tool, an interesting study of gender, and a political lightning rod. But most of all it's a devotional tool for men and women who've grown accustomed to the bible as a book by and for males and have internalized the brutal ideas implicit in that. It's written in the hope that once-beautiful passages that have lost their luster may, when the patriarchy is removed, shine brightly once again.
+
+Written by Jack on {{page.date | date: "%B, %Y" }}
