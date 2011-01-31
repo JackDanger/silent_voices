@@ -1,0 +1,8 @@
+---
+layout: post
+title: What do we do with a text?
+author: Jack
+---
+
+h1. {{page.title}}
+
