@@ -1,48 +1,53 @@
-.header
-  .inner
-    .home_link
-      %a{:href =>'../index.html'} Silent Voices
-
-.container
-
-  .nav
-    .prev_link
-      - if prev_page
-        %a{ :href => prev_page.path_from(self)}
-          &laquo;
-          = prev_page.name
-    .home_link
-      %h2.chapter
-        %a{:href => book_page.path_from(self)}= book[:name]
-        = number
-
-    .next_link
-      - if next_page
-        %a{ :href => next_page.path_from(self)}
-          = next_page.name
-          &raquo;
+#book_page
+  #header
+    .row
+      .column.grid_9
+        %a{:href =>'../index.html'} Silent Voices
 
 
-
-  .entries.chapter
-    - verses.each do |verse|
-      .entry.verse
-        .anchor.number
-          %a{:name => verse[:number], :href => verse[:number]}= verse[:number]
-        .content.text= verse[:text]
+  #container.row
+    #facebook_like
+      %iframe{:src => "http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsilentvoicesbible.com/#{path_from(SilentVoices.start_page)}&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35", :scrolling => "no", :frameborder => "0", :style => "border:none; overflow:hidden; width:120px; height:35px;", :allowTransparency => "true"}
 
 
-  .nav
-    .prev_link
-      - if prev_page
-        %a{ :href => prev_page.path_from(self)}
-          &laquo;
-          = prev_page.name
-      %h2.chapter
-        %a{:href => book_page.path_from(self)}= book[:name]
-        = number
-    .next_link
-      - if next_page
-        %a{ :href => next_page.path_from(self)}
-          = next_page.name
-          &raquo;
+    .nav
+      .prev_link
+        - if prev_page
+          %a{ :href => prev_page.path_from(self)}
+            &laquo;
+            = prev_page.name
+      .home_link
+        %h2.chapter
+          %a{:href => book_page.path_from(self)}= book[:name]
+          = number
+
+      .next_link
+        - if next_page
+          %a{ :href => next_page.path_from(self)}
+            = next_page.name
+            &raquo;
+
+
+
+    .entries.chapter
+      - verses.each do |verse|
+        .entry.verse
+          .anchor.number
+            %a{:name => verse[:number], :href => verse[:number]}= verse[:number]
+          .content.text= verse[:text]
+
+
+    .nav
+      .prev_link
+        - if prev_page
+          %a{ :href => prev_page.path_from(self)}
+            &laquo;
+            = prev_page.name
+        %h2.chapter
+          %a{:href => book_page.path_from(self)}= book[:name]
+          = number
+      .next_link
+        - if next_page
+          %a{ :href => next_page.path_from(self)}
+            = next_page.name
+            &raquo;

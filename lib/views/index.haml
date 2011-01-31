@@ -1,19 +1,21 @@
-#header
-  .row
-    .column.grid_9
-      .home_link
+#book_page
+  #header
+    .row
+      .column.grid_9
         %a{:href =>'../index.html'} Silent Voices
 
-#container.row
-  #facebook_like
-    %iframe{:src => "http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsilentvoicesbible.com/#{path_from(SilentVoices.start_page)}&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35", :scrolling => "no", :frameborder => "0", :style => "border:none; overflow:hidden; width:120px; height:35px;", :allowTransparency => "true"}
 
-  .column.grid_9
-    %h2 Silent Voices Bible
+  #container.row
+    #facebook_like
+      %iframe{:src => "http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsilentvoicesbible.com/#{path_from(SilentVoices.start_page)}&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35", :scrolling => "no", :frameborder => "0", :style => "border:none; overflow:hidden; width:120px; height:35px;", :allowTransparency => "true"}
 
-  .entries.books
+
+    .column.grid_9
+      %h2 Silent Voices Bible
+
     - book_pages.each do |book|
       .entry.book.column.grid_3
-        .anchor= book.number
-        .content
-          %a{:href => book.path_from(self)}= book.name
+        .row
+          .anchor.column.grid_1= book.number
+          .content.column.grid_2
+            %a{:href => book.path_from(self)}= book.name

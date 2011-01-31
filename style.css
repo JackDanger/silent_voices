@@ -74,6 +74,14 @@ h1, h2, h3 {
   font-size: 45px;
   color: #FFF;
 }
+#header a {
+  display: block;
+  margin: 20px 0 0 0;
+  padding: 0;
+  text-shadow: 1px 1px 2px #777;
+  font-size: 22px;
+  color: #FFF;
+}
 #container {
   position: relative;
   width: 720px;
@@ -82,7 +90,7 @@ h1, h2, h3 {
 .nav {
   float: left;
   clear: both;
-  margin: 1em auto;
+  margin: 1em auto 0 auto;
 }
 div#facebook_like {
   position: absolute;
@@ -135,7 +143,15 @@ div.next_link {
   float: left;
   clear: none;
   height: 2em;
+}
+div.prev_link {
+  text-align: right;
+}
+div.home_link {
   text-align: center;
+}
+div.next_link {
+  text-align: left;
 }
 div.prev_link a,
 div.home_link a,
@@ -178,6 +194,7 @@ div.entry.book {
 div.entry.book .content {
   font-size: 1.4em;
   clear: none;
+  width: auto;
 }
 div.entry.book .anchor {
   line-height: 2.5em;
