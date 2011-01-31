@@ -101,7 +101,7 @@ module SilentVoices
       end
 
       def strip_comments string
-        string = string.gsub /(.*)(\{.*\})(.*)/, '\1\3'
+        string = string.gsub /(.*)?(\{.*\})(.*)?/, '\1\3'
         string = string.gsub /\[(.*)\]/, '\1'
         string
       end
