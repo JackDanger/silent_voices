@@ -7,7 +7,7 @@ module SilentVoices
     end
 
     def process
-      @compiled = compile
+      # @compiled = compile
       write_layout
     end
 
@@ -29,12 +29,12 @@ module SilentVoices
       def write_layout
         StartPage.new
         IndexPage.new
-        @compiled.each do |book|
-          BookPage.new book
-          book[:chapters].each do |chapter|
-            ChapterPage.new chapter, book
-          end
-        end
+        # @compiled.each do |book|
+        #   BookPage.new book
+        #   book[:chapters].each do |chapter|
+        #     ChapterPage.new chapter, book
+        #   end
+        # end
         Page.write_all
       end
 
@@ -51,7 +51,6 @@ module SilentVoices
           ret << { :name => name,
                    :number => number,
                    :chapters => chapters }
-          return ret if ret.size > 1
         end
         ret
       end

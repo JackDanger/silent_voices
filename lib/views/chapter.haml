@@ -1,9 +1,48 @@
-%h2.chapter
-  %a{:href => book_page.path_from(self)}= book[:name]
-  = number
-.entries.chapter
-  - verses.each do |verse|
-    .entry.verse
-      .anchor.number
-        %a{:name => verse[:number], :href => verse[:number]}= verse[:number]
-      .content.text= verse[:text]
+.header
+  .inner
+    .home_link
+      %a{:href =>'../index.html'} Silent Voices
+
+.container
+
+  .nav
+    .prev_link
+      - if prev_page
+        %a{ :href => prev_page.path_from(self)}
+          &laquo;
+          = prev_page.name
+    .home_link
+      %h2.chapter
+        %a{:href => book_page.path_from(self)}= book[:name]
+        = number
+
+    .next_link
+      - if next_page
+        %a{ :href => next_page.path_from(self)}
+          = next_page.name
+          &raquo;
+
+
+
+  .entries.chapter
+    - verses.each do |verse|
+      .entry.verse
+        .anchor.number
+          %a{:name => verse[:number], :href => verse[:number]}= verse[:number]
+        .content.text= verse[:text]
+
+
+  .nav
+    .prev_link
+      - if prev_page
+        %a{ :href => prev_page.path_from(self)}
+          &laquo;
+          = prev_page.name
+      %h2.chapter
+        %a{:href => book_page.path_from(self)}= book[:name]
+        = number
+    .next_link
+      - if next_page
+        %a{ :href => next_page.path_from(self)}
+          = next_page.name
+          &raquo;

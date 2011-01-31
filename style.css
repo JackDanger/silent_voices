@@ -1,7 +1,42 @@
+/* ================ */
+/* = The 1Kb Grid = */     /* 9 columns, 60 pixels each, with 20 pixel gutter */
+/* ================ */
+
+.grid_1 { width:60px; }
+.grid_2 { width:140px; }
+.grid_3 { width:220px; }
+.grid_4 { width:300px; }
+.grid_5 { width:380px; }
+.grid_6 { width:460px; }
+.grid_7 { width:540px; }
+.grid_8 { width:620px; }
+.grid_9 { width:700px; }
+
+.column {
+	margin: 0 10px;
+	overflow: hidden;
+	float: left;
+	display: inline;
+}
+.row {
+	width: 720px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.row .row {
+	margin: 0 -10px;
+	width: auto;
+	display: inline-block;
+}
+
+
+
+
 
 body {
   margin: 0;
   padding: 0;
+  color: #333;
   background-color: #FDFDFA;
 }
 
@@ -11,37 +46,51 @@ a {
 a:hover {
   text-decoration: underline;
 }
+h1, h2, h3 {
+  font-family: Neuton, Helvetica, serif;
+  text-align: center;
+}
 
-div.container {
+
+
+/* page structure */
+
+#header {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  min-height: 40px;
+  border-bottom: 1px solid #FFF;
+  background-color: #613714;
+  -moz-box-shadow: 0 0 4px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+#header h1 {
+  text-align: left;
+  margin: 80px 0 0 0;
+  padding: 0;
+  text-shadow: 1px 1px 2px #777;
+  font-size: 45px;
+  color: #FFF;
+}
+#container {
   position: relative;
   width: 720px;
   margin: 1em auto;
 }
-div.nav {
+.nav {
   float: left;
   clear: both;
   margin: 1em auto;
 }
-
 div#facebook_like {
   position: absolute;
-  right: -150px;
+  right: 0px;
   top: 136px;
 }
 
-div.back_to_book {
-  width: 720px;
-  clear: both;
-  margin: 0.5em auto 0 auto;
-  text-align: center;
-  color: #999;
-}
-div.back_to_book a {
-  color: #333;
-  font-weight: bold;
-  font-size: 1.9em;
-}
-div.footer {
+#footer {
   width: 720px;
   padding: 0;
   clear: both;
@@ -49,11 +98,30 @@ div.footer {
   text-align: center;
   color: #999;
 }
-div.footer a {
+#footer a {
   text-decoration: none;
   font-weight: bold;
   color: #999;
 }
+
+
+
+#start_page p {
+  font-size: 1.2em;
+  line-height: 1.8em;
+  font-family: Neuton;
+}
+#start_page h2 {
+  text-align: left;
+  color: #0A0;
+}
+/* start page */
+#start_page .quote {
+  font-size: 32px;
+  text-align: right;
+}
+
+/* navigation */
 
 div.prev_link,
 div.home_link,
@@ -73,13 +141,8 @@ div.next_link a {
   text-decoration: none;
 }
 
-h1, h2, h3 {
-  font-family: Neuton, Helvetica, serif;
-  text-align: center;
-}
-h3.quote {
-  color: #999;
-}
+/* content */
+
 div.entries {
   float: left;
   clear: both;
@@ -123,3 +186,4 @@ div.entry.chapter .anchor {
 div.entry.chapter .content {
   width: 599px;
 }
+

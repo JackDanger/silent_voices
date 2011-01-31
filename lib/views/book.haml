@@ -1,12 +1,51 @@
-%h2.book= name
+.header
+  .inner
+    .home_link
+      %a{:href =>'../index.html'} Silent Voices
 
-.entries.chapters
-  - chapter_pages.each do |chapter|
-    .entry.chapter
-      .anchor
-        Chapter
-        = chapter.number.to_i
-      .content.chapter_preview
-        %a{:href => chapter.path_from(self)}
-          = chapter.verses.first[:text].to_s[0, 45]
-          [...]
+
+.container
+
+  .nav
+    .prev_link
+      - if prev_page
+        %a{ :href => prev_page.path_from(self)}
+          &laquo;
+          = prev_page.name
+    .home_link
+      %a{:href =>'index.html'} Silent Voices
+    .next_link
+      - if next_page
+        %a{ :href => next_page.path_from(self)}
+          = next_page.name
+          &raquo;
+
+
+
+  %h2.book= name
+
+  .entries.chapters
+    - chapter_pages.each do |chapter|
+      .entry.chapter
+        .anchor
+          Chapter
+          = chapter.number.to_i
+        .content.chapter_preview
+          %a{:href => chapter.path_from(self)}
+            = chapter.verses.first[:text].to_s[0, 45]
+            [...]
+
+  .nav
+    .prev_link
+      - if prev_page
+        %a{ :href => prev_page.path_from(self)}
+          &laquo;
+          = prev_page.name
+    .home_link
+      %a{:href =>'index.html'} Silent Voices
+    .next_link
+      - if next_page
+        %a{ :href => next_page.path_from(self)}
+          = next_page.name
+          &raquo;
+

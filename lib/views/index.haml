@@ -1,8 +1,15 @@
-%h2.chapter Silent Voices Bible
+.header
+  .inner
+    .home_link
+      %a{:href =>'../index.html'} Silent Voices
 
-.entries.books
-  - book_pages.each do |book|
-    .entry.book
-      .anchor= book.number
-      .content
-        %a{:href => book.path_from(self)}= book.name
+.container
+
+  %h2 Silent Voices Bible
+
+  .entries.books
+    - book_pages.each do |book|
+      .entry.book
+        .anchor= book.number
+        .content
+          %a{:href => book.path_from(self)}= book.name

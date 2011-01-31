@@ -42,8 +42,10 @@ module SilentVoices
     end
 
     def render
-      Haml::Engine.new(File.read(ViewsDirectory + '/template.haml'), :filename => 'template').render(self) {
-        Haml::Engine.new(File.read(ViewsDirectory + '/' + view_file), :filename => view_file).render(self)
+      template =  Haml::Engine.new(File.read(ViewsDirectory + '/template.haml'), :filename => 'template')
+      template.render(self) {
+        view = Haml::Engine.new(File.read(ViewsDirectory + '/' + view_file), :filename => view_file)
+        view.render(self)
       }
     end
 
@@ -88,6 +90,12 @@ module SilentVoices
     def outfile
       SilentVoices::Directory + '/index.html'
     end
+
+    def write
+      puts ''
+      print "writing: #{name} => index.html"
+      super
+    end
   end
 
   class IndexPage < Page
@@ -129,7 +137,7 @@ module SilentVoices
 
     def write
       puts ''
-      print "writing: #{name} => #{filename}"
+      print "writing: #{name} => voices/index.html"
       super
     end
   end
