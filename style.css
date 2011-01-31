@@ -88,9 +88,7 @@ h1, h2, h3 {
   margin: 1em auto;
 }
 .nav {
-  float: left;
-  clear: both;
-  margin: 1em auto 0 auto;
+/*  margin: 1em auto 0 auto;*/
 }
 div#facebook_like {
   position: absolute;
@@ -136,14 +134,6 @@ div#facebook_like {
 
 /* navigation */
 
-div.prev_link,
-div.home_link,
-div.next_link {
-  width: 240px;
-  float: left;
-  clear: none;
-  height: 2em;
-}
 div.prev_link {
   text-align: right;
 }
@@ -153,9 +143,7 @@ div.home_link {
 div.next_link {
   text-align: left;
 }
-div.prev_link a,
-div.home_link a,
-div.next_link a {
+.nav a {
   font-family: 'Bentham', Helvetica, serif;
   font-size: 1.3em;
   color: #666;

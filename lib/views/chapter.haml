@@ -10,18 +10,18 @@
       %iframe{:src => "http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsilentvoicesbible.com/#{path_from(SilentVoices.start_page)}&amp;layout=button_count&amp;show_faces=false&amp;width=50&amp;action=recommend&amp;font=lucida+grande&amp;colorscheme=light&amp;height=35", :scrolling => "no", :frameborder => "0", :style => "border:none; overflow:hidden; width:120px; height:35px;", :allowTransparency => "true"}
 
 
-    .nav
-      .prev_link
+    .nav.row
+      .prev_link.column.grid_3
         - if prev_page
           %a{ :href => prev_page.path_from(self)}
             &laquo;
             = prev_page.name
-      .home_link
+      .home_link.column.grid_3
         %h2.chapter
           %a{:href => book_page.path_from(self)}= book[:name]
           = number
 
-      .next_link
+      .next_link.column.grid_3
         - if next_page
           %a{ :href => next_page.path_from(self)}
             = next_page.name

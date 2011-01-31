@@ -30,7 +30,7 @@ module SilentVoices
         StartPage.new
         IndexPage.new
         @compiled.each do |book|
-          break if ($sss ||= '1').succ! == '5'
+          # break if ($sss ||= '1').succ! == '5'
           BookPage.new book
           book[:chapters].each do |chapter|
             ChapterPage.new chapter, book
