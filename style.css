@@ -156,7 +156,6 @@ div#facebook_like {
   width: 100%;
   text-align: right;
 }
-/* start page */
 #start_page .quote {
   font-size: 32px;
   margin-bottom: 1em;
@@ -169,6 +168,13 @@ div#facebook_like {
   font-size: 1.3em;
   line-height: 1.6em;
   margin-top: 0.5em;
+}
+
+
+/* Blog */
+#blog h1 {
+  text-align: left;
+  color: #0A0;
 }
 
 /* Index Page */
