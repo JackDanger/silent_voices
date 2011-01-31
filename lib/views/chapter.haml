@@ -33,7 +33,7 @@
       - verses.each do |verse|
         .entry.verse
           .anchor.number
-            %a{:name => verse[:number], :href => verse[:number]}= verse[:number]
+            %a{:name => verse[:number], :href => "##{verse[:number]}"}= verse[:number]
           .content.text= verse[:text]
 
 

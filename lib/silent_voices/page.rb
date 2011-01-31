@@ -53,6 +53,16 @@ module SilentVoices
       '../style.css'
     end
 
+    def facebook_like
+      %Q{<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+FB.init({appId: '186246214732289', status: true, cookie: true,
+xfbml: true});
+};
+</script><fb:like href="http://silentvoicesbible.com/#{path_from(SilentVoices.start_page)}" show_faces="false" width="120" action="recommend" font="lucida grande" layout="button_count"></fb:like>}
+    end
+
     def self.write_all
       Dir.mkdir Directory + '/voices' rescue ''
       SilentVoices.pages.each do |page|
@@ -117,6 +127,27 @@ module SilentVoices
 
     def book_pages
       @book_pages ||= SilentVoices.pages.select {|page| BookPage === page }.sort_by(&:number)
+    end
+
+    def books_grouped
+      [
+        ['Old Testament',
+          [
+            ['The Torah', book_pages[0, 5]],
+            ['Communal History', book_pages[5, 13]],
+            ['Poetry',          book_pages[18, 4]],
+            ['Major Prophets',  book_pages[22, 5]],
+            ['Minor Prophets',  book_pages[27, 12]]
+          ]
+        ],
+        ['New Testament',
+          [
+            ['The Gospels', book_pages[39, 5]],
+            ['The Letters', book_pages[44, 21]],
+            ['Apokálypsis', book_pages[65, 1]]
+          ]
+        ]
+      ]
     end
 
     def path_from(page)

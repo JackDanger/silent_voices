@@ -2,7 +2,10 @@
   #header
     .row
       .column.grid_9
-        %a{:href =>'../index.html'} Silent Voices
+        %h1
+          %a{:href =>'../index.html'} Silent Voices Bible
+    .row
+      .column.grid_9
 
 
   #container.row
@@ -11,11 +14,11 @@
 
 
     .column.grid_9
-      %h2 Silent Voices Bible
-
-    - book_pages.each do |book|
-      .entry.book.column.grid_3
-        .row
-          .anchor.column.grid_1= book.number
-          .content.column.grid_2
-            %a{:href => book.path_from(self)}= book.name
+      - books_grouped.each do |testament, groups|
+        .testament
+          %h1= testament
+          - groups.each do |name, books|
+            .group
+              %h3= name
+              - books.each do |book|
+                %a.book_name_link{:href => book.path_from(self)}= book.name

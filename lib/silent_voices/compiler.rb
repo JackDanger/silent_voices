@@ -7,7 +7,7 @@ module SilentVoices
     end
 
     def process
-      # @compiled = compile
+      @compiled = compile
       write_layout
     end
 
@@ -17,9 +17,9 @@ module SilentVoices
         each_book do |book_text|
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
-              # verse = normalize       verse
-              # verse = strip_comments  verse
-              # verse = feminize        verse
+              verse = normalize       verse
+              verse = strip_comments  verse
+              verse = feminize        verse
               verse
             end
           end
@@ -29,13 +29,12 @@ module SilentVoices
       def write_layout
         StartPage.new
         IndexPage.new
-        # @compiled.each do |book|
-        #   # break if ($sss ||= '1').succ! == '5'
-        #   BookPage.new book
-        #   book[:chapters].each do |chapter|
-        #     ChapterPage.new chapter, book
-        #   end
-        # end
+        @compiled.each do |book|
+          BookPage.new book
+          book[:chapters].each do |chapter|
+            ChapterPage.new chapter, book
+          end
+        end
         Page.write_all
       end
 
