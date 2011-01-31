@@ -38,6 +38,7 @@ body {
   padding: 0;
   color: #333;
   background-color: #FDFDFA;
+  font-family: Neuton, Helvetica, serif;
 }
 
 a {
@@ -48,7 +49,6 @@ a:hover {
   text-decoration: underline;
 }
 h1, h2, h3 {
-  font-family: Neuton, Helvetica, serif;
   text-align: center;
 }
 
@@ -105,12 +105,11 @@ div#facebook_like {
   clear: both;
   margin: 1em auto 4em auto;
   text-align: center;
-  color: #999;
+  color: #666;
 }
 #footer a {
-  text-decoration: none;
   font-weight: bold;
-  color: #999;
+  color: #666;
 }
 
 /* Start Page */
@@ -118,7 +117,6 @@ div#facebook_like {
 #start_page p {
   font-size: 1.2em;
   line-height: 1.8em;
-  font-family: Neuton;
 }
 #start_page a.read_on {
   border: 10px inner #FDFDFA;
