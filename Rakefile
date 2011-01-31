@@ -1,3 +1,4 @@
+Rake.application.options.trace = true
 
 GUTENBERG_SOURCE = File.expand_path File.join(File.dirname(__FILE__), 'vendor', '8924.txt.utf8')
 
