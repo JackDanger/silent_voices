@@ -21,6 +21,9 @@ task :build => 'build:all'
 task :see do
   exec 'open index.html'
 end
+task :live do
+  exec 'open http://silentvoicesbible.com/'
+end
 
 task :deploy do
   system %Q{git commit voices index.html -m "building"}
