@@ -16,6 +16,8 @@ namespace :build do
   end
 end
 
+task :build => 'build:all'
+
 task :see do
   exec 'open index.html'
 end
