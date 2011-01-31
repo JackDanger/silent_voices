@@ -118,6 +118,20 @@ div#facebook_like {
   line-height: 1.8em;
   font-family: Neuton;
 }
+#start_page a.read_on {
+  border: 10px inner #FDFDFA;
+  background-color: #0A0;
+  padding: 0 12px 3px 12px;
+  color: #FFF;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px
+}
+#start_page a.read_on:hover {
+  background-color: #1B1;
+}
+#start_page a.final {
+  font-size: 1.8em;
+}
 #start_page h2 {
   text-align: left;
   color: #0A0;

@@ -7,7 +7,7 @@ module SilentVoices
     end
 
     def process
-      @compiled = compile
+      # @compiled = compile
       write_layout
     end
 
@@ -29,13 +29,13 @@ module SilentVoices
       def write_layout
         StartPage.new
         IndexPage.new
-        @compiled.each do |book|
-          # break if ($sss ||= '1').succ! == '5'
-          BookPage.new book
-          book[:chapters].each do |chapter|
-            ChapterPage.new chapter, book
-          end
-        end
+        # @compiled.each do |book|
+        #   # break if ($sss ||= '1').succ! == '5'
+        #   BookPage.new book
+        #   book[:chapters].each do |chapter|
+        #     ChapterPage.new chapter, book
+        #   end
+        # end
         Page.write_all
       end
 
