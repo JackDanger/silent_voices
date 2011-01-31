@@ -25,8 +25,15 @@ task :live do
   exec 'open http://silentvoicesbible.com/'
 end
 
-task :blog do
-  system 'cd _blog_src; jekyll; cd -'
+task :blog => ['blog:build', 'blog:see']
+namespace :blog do
+  task :build do
+    system 'cd _blog_src; jekyll; cd -'
+  end
+
+  task :see do
+    exec 'open blog/index.html'
+  end
 end
 
 task :deploy do
