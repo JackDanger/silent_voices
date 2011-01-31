@@ -2,7 +2,7 @@
   #header
     .row
       .column.grid_9
-        %a{:href =>'../index.html'} Silent Voices
+        %a{:href =>'../index.html'} Silent Voices | The Feminist Bible
 
 
   #container.row
@@ -16,6 +16,8 @@
           %a{ :href => prev_page.path_from(self)}
             &laquo;
             = prev_page.name
+        - else
+          &nbsp;
       .home_link.column.grid_3
         %a{:href =>'index.html'} All Books
       .next_link.column.grid_3
@@ -23,6 +25,8 @@
           %a{ :href => next_page.path_from(self)}
             = next_page.name
             &raquo;
+        - else
+          &nbsp;
 
 
 
@@ -45,6 +49,8 @@
           %a{ :href => prev_page.path_from(self)}
             &laquo;
             = prev_page.name
+        - else
+          &nbsp;
       .home_link.column.grid_3
         %a{:href =>'index.html'} All Books
       .next_link.column.grid_3
@@ -52,3 +58,5 @@
           %a{ :href => next_page.path_from(self)}
             = next_page.name
             &raquo;
+        - else
+          &nbsp;

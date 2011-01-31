@@ -23,9 +23,9 @@ module SilentVoices
         each_book do |book_text|
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
-              # verse = normalize       verse
-              # verse = strip_comments  verse
-              # verse = feminize        verse
+              verse = normalize       verse
+              verse = strip_comments  verse
+              verse = feminize        verse
               verse
             end
           end
