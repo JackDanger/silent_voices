@@ -143,6 +143,9 @@ div.home_link {
 div.next_link {
   text-align: left;
 }
+div.home_link h2 {
+  margin-top: -0.25em;
+}
 .nav a {
   font-family: 'Bentham', Helvetica, serif;
   font-size: 1.3em;

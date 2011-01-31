@@ -37,16 +37,18 @@
           .content.text= verse[:text]
 
 
-    .nav
-      .prev_link
+    .nav.row
+      .prev_link.column.grid_3
         - if prev_page
           %a{ :href => prev_page.path_from(self)}
             &laquo;
             = prev_page.name
+      .home_link.column.grid_3
         %h2.chapter
           %a{:href => book_page.path_from(self)}= book[:name]
           = number
-      .next_link
+
+      .next_link.column.grid_3
         - if next_page
           %a{ :href => next_page.path_from(self)}
             = next_page.name
