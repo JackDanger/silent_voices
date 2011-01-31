@@ -144,8 +144,19 @@ div#facebook_like {
 }
 #start_page #teaser {
   display: none;
+}
+#start_page .large_quote {
   font-size: 2.2em;
   line-height: 1.5em;
+}
+#start_page .large_quote em {
+  display: block;
+  width: 100%;
+}
+#start_page .large_quote .attribution {
+  display: block;
+  width: 100%;
+  text-align: right;
 }
 /* start page */
 #start_page .quote {
