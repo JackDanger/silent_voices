@@ -12,7 +12,7 @@ namespace :build do
 
   desc "Build the front pages"
   task :front do
-    SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), false).process
+    SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'front').process
   end
 
   desc "Skip the compilation step"
