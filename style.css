@@ -245,13 +245,27 @@ div.entry .anchor {
   font-size: 1.2em;
   float: left;
   clear: left;
-  width: 40px;
 }
 div.entry .content {
   font-family: Neuton, Helvetica, Georgia;
   float: left;
   clear: right;
-  width: 659px;
+}
+
+div.entries.chapter {
+  border: 1px solid #EAEAEA;
+  margin: 15px 0;
+  padding: 10px 0;
+  background-image: url(paper.jpg);
+/*  background-color: #FDFDFA;*/
+}
+div.entries.chapter .anchor {
+  width: 40px;
+  margin: 0 10px;
+}
+div.entries.chapter .content {
+  width: 609px;
+  margin: 0 10px;
 }
 
 div.entry.book {

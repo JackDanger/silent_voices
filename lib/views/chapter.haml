@@ -32,18 +32,16 @@
         - else
           &nbsp;
 
-    .column.grid_9
+    .column.grid_9.entries.chapter
       #chapter_name
         Chapter
         = number.to_i
 
-
-      .entries.chapter
-        - verses.each do |verse|
-          .entry.verse
-            .anchor.number
-              %a{:name => verse[:number], :href => "##{verse[:number]}"}= verse[:number]
-            .content.text= verse[:text]
+      - verses.each do |verse|
+        .entry.verse
+          .anchor.number
+            %a{:name => verse[:number], :href => "##{verse[:number]}"}= verse[:number]
+          .content.text= verse[:text]
 
 
     .nav
