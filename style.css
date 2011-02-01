@@ -253,11 +253,10 @@ div.entry .content {
 }
 
 div.entries.chapter {
-  border: 1px solid #EAEAEA;
+  border: 2px solid #EFEFEF;
   margin: 15px 0;
-  padding: 10px 0;
+  padding: 10px 0 20px 0;
   background-image: url(paper.jpg);
-/*  background-color: #FDFDFA;*/
 }
 div.entries.chapter .anchor {
   width: 40px;
