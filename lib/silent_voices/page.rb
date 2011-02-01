@@ -105,6 +105,16 @@ xfbml: true});
       SilentVoices::Directory + '/index.html'
     end
 
+    def blog_links
+      Dir.glob(Directory + '/_blog_src/_posts/*.textile')[0,5].map do |filename|
+
+        [ 'blog/' + filename.split('/').last.sub(/\d{4}-\d{2}-\d{2}-/, '').chomp('.textile') + '.html',
+          File.read(filename).scan(/title: (.*)/).flatten.first
+        ]
+
+      end
+    end
+
     def write
       puts ''
       print "writing: #{name} => index.html"

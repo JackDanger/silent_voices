@@ -14,4 +14,5 @@ The Silent Voices Bible uses this last option. It's a meticulous swapping of all
 
 This rewording of the bible is useful research tool, an interesting study of gender, and a political lightning rod. But most of all it's a devotional tool for men and women who've grown accustomed to the bible as a book by and for males and have internalized the brutal ideas implicit in that. It's written in the hope that once-beautiful passages that have lost their luster may, when the patriarchy is removed, shine brightly once again.
 
-Written by Jack on {{page.date | date: "%B, %Y" }}
+
+p(written_by). Written by Jack &middot; {{page.date | date: "%B, %Y" }}

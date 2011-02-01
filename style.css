@@ -176,6 +176,10 @@ div#facebook_like {
   text-align: left;
   color: #0A0;
 }
+#blog .written_by {
+  font-size: 0.9em;
+  color: #999;
+}
 
 /* Index Page */
 

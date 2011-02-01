@@ -7,7 +7,7 @@ author: Jack
 h1. {{page.title}}
 
 
-"All literature is God-breathed and useful for teaching" "2 Timothy 3:16":http://silentvoicesbible.com/voices/55-2_timothy-003.html#016
+"All literature is God-breathed and useful for teaching" "2 Timothy 3:16":../voices/55-2_timothy-003.html#016
 
 There are Sunday schools and bible studies across the world that are teaching people how to become familiar with, understand, and even memorize the Christian bible. There's no question that we know the bible, but what do we know exactly? What, other than names, dates and book order, have we learned?
 
@@ -24,4 +24,4 @@ While Sunday schoolers are memorizing the bible they're also subconsciously memo
 It takes hard work to overturn centuries of assumptions about gender. Just decades ago it was common knowledge that if a woman ran a mile her heart would burst, that she was predisposed to irrationality, and that her personal satisfaction was tied to the presence of a man in her life. We no longer believe any of these (hopefully) but there's much more to be unlearned.
 
 
-Written by Jack on {{page.date | date: "%B, %Y" }}
+p(written_by). Written by Jack &middot; {{page.date | date: "%B, %Y" }}

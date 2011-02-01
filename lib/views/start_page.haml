@@ -56,6 +56,13 @@
         %li
           %a{:href => 'voices/40-matthew-005.html'} Matthew 5
 
+
+      %h2.theres_a_blog The Blog
+      %ul
+        - blog_links.each do |href, title|
+          %li
+            %a{:href => href}= title
+
     .box.column.grid_6
       %p
         %a{:name => 'read_on'}
