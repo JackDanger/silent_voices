@@ -32,6 +32,7 @@ module SilentVoices
         'his' =>          'hers',
         'him' =>          'her',
         'himself' =>      'herself',
+        'foreskin' =>     'vulva',
         'adulteress' =>   'adulterer',
         'adulteresses' => 'adulterers',
         'prostitute' =>   'philanderer',
@@ -58,11 +59,14 @@ module SilentVoices
 
     def names
       {
+        'Adam' =>         'Eve',
         'Noah' =>         'Noa',
         'David' =>        'Davina',
         'Samuel' =>       'Samantha',
         'Herod'  =>       'Heroda',
         'Jacob' =>        'Jacoba',
+        'Simon' =>        'Simona',
+        'Joseph' =>       'Josephine',
         'Abram' =>        'Abra',
         'Solomon' =>      'Solomin',
         'Isaiah' =>       'Isaia',
