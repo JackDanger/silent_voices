@@ -30,13 +30,13 @@ task :build => ['build:all', 'build:blog']
 task :blog => ['build:blog', 'see_blog']
 
 task :see do
-  exec 'open index.html'
+  system 'open index.html'
 end
 task :see_blog do
-  exec 'open blog/index.html'
+  system 'open blog/index.html'
 end
 task :live do
-  exec 'open http://silentvoicesbible.com/'
+  system 'open http://silentvoicesbible.com/'
 end
 
 task :deploy do
