@@ -37,6 +37,7 @@ module SilentVoices
         'prostitute' =>   'philanderer',
         'prostitutes' =>  'philanderers',
         'craftsman' =>    'craftswoman',
+        'priest' =>       'priestess',
         'husband' =>      'wife',
         'husbands' =>     'wives',
         'kinsman' =>      'kinswoman',
@@ -57,15 +58,24 @@ module SilentVoices
 
     def names
       {
-        # 'Matt' =>        'Matta',
-        # 'Jesus' =>       'Jesas',
-        'Noah' =>        'Noa',
-        'David' =>       'Davina',
-        'Samuel' =>      'Samantha',
-        'Herod'  =>      'Heroda',
-        'James' =>       'Jamie',
-        'Daniel' =>      'Danielle',
-        'Paul' =>        'Paula'
+        'Noah' =>         'Noa',
+        'David' =>        'Davina',
+        'Samuel' =>       'Samantha',
+        'Herod'  =>       'Heroda',
+        'Jacob' =>        'Jacoba',
+        'Abram' =>        'Abra',
+        'Solomon' =>      'Solomin',
+        'Isaiah' =>       'Isaia',
+        'Jeremiah' =>     'Jeremia',
+        'Abraham' =>      'Abrahai',
+        'Daniel' =>       'Danielle',
+        'James' =>        'Jamie',
+        'Matthew' =>      'Matthia',
+        'Luke' =>         'Luca',
+        'Mark' =>         'Margaret',
+        'Judas' =>        'Judasie',
+        'John' =>         'Johanna',
+        'Paul' =>         'Paula'
       }
     end
 
