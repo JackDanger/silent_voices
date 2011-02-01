@@ -15,7 +15,11 @@ module SilentVoices
     protected
 
       def run_books?
-        'books' == @level
+        %{books fast}.include? @level
+      end
+
+      def fast_compile?
+        'fast' == @level
       end
 
       def compile
@@ -23,9 +27,11 @@ module SilentVoices
         each_book do |book_text|
           each_chapter book_text do |chapter_text|
             each_verse chapter_text do |verse|
-              verse = normalize       verse
-              verse = strip_comments  verse
-              verse = feminize        verse
+              unless fast_compile?
+                verse = normalize       verse
+                verse = strip_comments  verse
+                verse = feminize        verse
+              end
               verse
             end
           end

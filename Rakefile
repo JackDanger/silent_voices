@@ -15,6 +15,11 @@ namespace :build do
     SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), false).process
   end
 
+  desc "Skip the compilation step"
+  task :fast do
+    SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'fast').process
+  end
+
   desc "Build the blog"
   task :blog do
     system 'cd _blog_src; jekyll; cd -'

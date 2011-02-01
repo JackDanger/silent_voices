@@ -90,11 +90,11 @@ h1, h2, h3 {
   overflow: visible;
 }
 .nav {
-/*  margin: 1em auto 0 auto;*/
+  padding: 0.75em 0 0 0;
 }
 div#facebook_like {
   position: absolute;
-  right: -25px;
+  right: -120px;
   top: 0px;
   text-align: right;
 }
@@ -216,9 +216,14 @@ div.next_link {
 div.home_link h2 {
   margin-top: -0.25em;
 }
+#chapter_name {
+  text-align: center;
+  font-size: 1.6em;
+  margin: 0.5em 0;
+}
 .nav a {
   font-family: 'Bentham', Helvetica, serif;
-  font-size: 1.3em;
+  font-size: 1.5em;
   color: #666;
   text-decoration: none;
 }
@@ -246,7 +251,7 @@ div.entry .content {
   font-family: Neuton, Helvetica, Georgia;
   float: left;
   clear: right;
-  width: 679px;
+  width: 659px;
 }
 
 div.entry.book {
