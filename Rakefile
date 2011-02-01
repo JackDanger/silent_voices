@@ -14,26 +14,24 @@ namespace :build do
   task :front do
     SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), false).process
   end
+
+  desc "Build the blog"
+  task :blog do
+    system 'cd _blog_src; jekyll; cd -'
+  end
 end
 
-task :build => 'build:all'
+task :build => ['build:all', 'build:blog']
+task :blog => ['build:blog', 'see_blog']
 
 task :see do
   exec 'open index.html'
 end
+task :see_blog do
+  exec 'open blog/index.html'
+end
 task :live do
   exec 'open http://silentvoicesbible.com/'
-end
-
-task :blog => ['blog:build', 'blog:see']
-namespace :blog do
-  task :build do
-    system 'cd _blog_src; jekyll; cd -'
-  end
-
-  task :see do
-    exec 'open blog/index.html'
-  end
 end
 
 task :deploy do
