@@ -37,7 +37,7 @@ namespace :blog do
 end
 
 task :deploy do
-  system %Q{git commit voices index.html -m "building"}
+  system %Q{git commit voices index.html blog -m "building"}
   system %Q{git push github master}
   system %Q{ssh 9suits.com "cd /www/silentvoicesbible.com; git pull"}
 
