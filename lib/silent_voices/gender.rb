@@ -43,6 +43,7 @@ module SilentVoices
         'husbands' =>     'wives',
         'kinsman' =>      'kinswoman',
         'nobleman' =>     'noblewoman',
+        'lord' =>         'domina',
         'gentleman' =>    'lady',
         'gentlemen' =>    'ladies',
         'prince' =>       'princess',
