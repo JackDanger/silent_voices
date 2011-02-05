@@ -56,7 +56,6 @@ module SilentVoices
         'princes' =>      'princesses',
         'king' =>         'queen',
         'kings' =>        'queens',
-        'kingdom' =>      'empire',
         'father' =>       'mother',
         'fathers' =>      'mothers',
         'brother' =>      'sister',
