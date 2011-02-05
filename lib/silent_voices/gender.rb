@@ -50,6 +50,7 @@ module SilentVoices
         'kinsman' =>      'kinswoman',
         'nobleman' =>     'noblewoman',
         'lord' =>         'domina',
+        'lords' =>        'dominas',
         'gentleman' =>    'lady',
         'gentlemen' =>    'ladies',
         'prince' =>       'princess',
