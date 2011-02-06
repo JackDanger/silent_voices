@@ -44,6 +44,7 @@ module SilentVoices
         'prostitute' =>   'philanderer',
         'prostitutes' =>  'philanderers',
         'craftsman' =>    'craftswoman',
+        'prophet' =>      'prophetess',
         'priest' =>       'priestess',
         'husband' =>      'wife',
         'husbands' =>     'wives',
@@ -84,6 +85,7 @@ module SilentVoices
         'Matthew' =>      'Matthia',
         'Luke' =>         'Luca',
         'Mark' =>         'Margaret',
+        'Anna' =>         'Andrew',
         'Judas' =>        'Judasie',
         'John' =>         'Johanna',
         'Paul' =>         'Paula'

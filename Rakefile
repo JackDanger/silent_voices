@@ -39,6 +39,10 @@ task :live do
   system 'open http://silentvoicesbible.com/'
 end
 
+task :irb do
+  exec "irb -rubygems -I'lib' -r silent_voices"
+end
+
 task :deploy do
   system %Q{git commit voices index.html blog -m "building"}
   system %Q{git push github master}
