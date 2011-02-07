@@ -201,7 +201,9 @@ div#facebook_like {
 #index_page a.book_name_link {
   font-size: 1.4em;
 }
-
+#index_page span.comma {
+  padding-right: 0.5em;
+}
 /* navigation */
 
 div.prev_link {
