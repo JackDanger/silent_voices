@@ -48,6 +48,7 @@ module SilentVoices
         'priest' =>       'priestess',
         'husband' =>      'wife',
         'husbands' =>     'wives',
+        'fishermen' =>    'fisherwomen',
         'kinsman' =>      'kinswoman',
         'nobleman' =>     'noblewoman',
         'lord' =>         'domina',
