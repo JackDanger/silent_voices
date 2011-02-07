@@ -74,6 +74,7 @@ module SilentVoices
         'Herod'  =>       'Heroda',
         'Jacob' =>        'Jacoba',
         'Simon' =>        'Simona',
+        'Peter' =>        'Petra',
         'Joseph' =>       'Josephine',
         'Abram' =>        'Abra',
         'Solomon' =>      'Solomin',
