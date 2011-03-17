@@ -44,6 +44,8 @@ module SilentVoices
         'prostitute' =>   'philanderer',
         'prostitutes' =>  'philanderers',
         'craftsman' =>    'craftswoman',
+        'watchman' =>     'watchwoman',
+        'watchmen' =>     'watchwomen',
         'prophet' =>      'prophetess',
         'priest' =>       'priestess',
         'husband' =>      'wife',
