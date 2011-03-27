@@ -111,7 +111,9 @@ div#facebook_like {
   font-weight: bold;
   color: #666;
 }
-
+.creative_commons {
+  margin: 1em 0;
+}
 /* Start Page */
 
 #start_page p {
