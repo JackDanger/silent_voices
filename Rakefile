@@ -10,6 +10,11 @@ namespace :build do
     SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'books').process
   end
 
+  desc "Build an html file for Kindle publishing"
+  task :kindle do
+    SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'books').process :kindle
+  end
+
   desc "Build the front pages"
   task :front do
     SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'front').process

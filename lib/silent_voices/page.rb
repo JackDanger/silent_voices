@@ -22,7 +22,7 @@ module SilentVoices
   end
 
   class Page
-    attr_accessor :path, :name, :links, :verses
+    attr_accessor :path, :name, :links, :verses, :is_kindle
 
     def initialize *args
       SilentVoices.pages << self
@@ -42,12 +42,21 @@ module SilentVoices
     end
 
     def render
-      template =  Haml::Engine.new(File.read(ViewsDirectory + '/template.haml'), :filename => 'template')
       template.render(self) {
-        view = Haml::Engine.new(File.read(ViewsDirectory + '/' + view_file), :filename => view_file)
         view.render(self)
       }
     end
+
+    def template
+      @template ||= Haml::Engine.new(File.read(ViewsDirectory + '/template.haml'), :filename => 'template')
+    end
+
+    def view
+      src = is_kindle? ? view_file.chomp('.haml') + '.kindle.haml' : view_file
+      @view ||= Haml::Engine.new(File.read(ViewsDirectory + '/' + src), :filename => src)
+    end
+
+    alias is_kindle? is_kindle
 
     def stylesheet_path
       '../style.css'
@@ -63,13 +72,31 @@ xfbml: true});
 </script><fb:like href="http://silentvoicesbible.com/#{path_from(SilentVoices.start_page)}" show_faces="false" width="120" action="like" font="lucida grande" layout="button_count"></fb:like>}
     end
 
-    def self.write_all
+    def self.write_all(medium = :web)
       Dir.mkdir Directory + '/voices' rescue ''
-      SilentVoices.pages.each do |page|
-        page.write
+      case medium
+      when :web
+        SilentVoices.pages.each do |page|
+          page.write
+        end
+        puts ''
+        puts "Wrote #{SilentVoices.pages.size} pages"
+      when :kindle
+        puts ''
+        print 'joining: '
+        html = []
+        SilentVoices.pages.each_with_index do |page, idx|
+          next if idx > 20
+          print '.'
+          STDOUT.flush
+          page.is_kindle = true
+          html << page.view.render(page)
+        end
+        File.open(Directory + '/kindle.html', 'w') do |f|
+          f.write html.join('<div style="page-break-before: always;"></div>')
+        end
+        puts ''
       end
-      puts ''
-      puts "Wrote #{SilentVoices.pages.size} pages"
     end
   end
 
@@ -86,7 +113,7 @@ xfbml: true});
     def next_page; nil; end
 
     def path_from(page)
-      page.is_a?(StartPage) ? 'index.html' :  "../ddindex.html"
+      page.is_a?(StartPage) ? 'index.html' :  "../index.html"
     end
 
     def stylesheet_path
@@ -162,7 +189,7 @@ xfbml: true});
           [
             ['The Gospels', book_pages[39, 5]],
             ['The Letters', book_pages[44, 21]],
-            ['Apokálypsis', book_pages[65, 1]]
+            ['Apokalypsis', book_pages[65, 1]]
           ]
         ]
       ]

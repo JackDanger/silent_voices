@@ -1,0 +1,6 @@
+- books_grouped.each do |testament, groups|
+  %h3= testament
+  - groups.each do |name, books|
+    %h4= name
+    %p
+      = books.map {|book| "<a href='book_#{book.number}' class='book_name_link'>#{book.name}</a>" }.join(', &nbsp;')

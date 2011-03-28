@@ -1,0 +1,8 @@
+%a{:name => "#{book[:number]}_#{number}"}
+%h4
+  Chapter
+  = number.to_i
+- verses.each do |verse|
+  %p
+    %sup= verse[:number].to_i
+    = verse[:text]

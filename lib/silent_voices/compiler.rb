@@ -7,9 +7,9 @@ module SilentVoices
       set_feminizing_forms
     end
 
-    def process
+    def process medium = :web
       @compiled = compile
-      write_layout
+      write_layout medium
     end
 
     protected
@@ -38,7 +38,7 @@ module SilentVoices
         end
       end
 
-      def write_layout
+      def write_layout medium
         StartPage.new
         if run_books?
           IndexPage.new
@@ -49,7 +49,7 @@ module SilentVoices
             end
           end
         end
-        Page.write_all
+        Page.write_all medium
       end
 
       def each_book
