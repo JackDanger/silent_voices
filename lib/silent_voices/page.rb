@@ -72,6 +72,10 @@ xfbml: true});
 </script><fb:like href="http://silentvoicesbible.com/#{path_from(SilentVoices.start_page)}" show_faces="false" width="120" action="like" font="lucida grande" layout="button_count"></fb:like>}
     end
 
+    def self.kindle_style
+      File.read('kindle.css')
+    end
+
     def self.write_all(medium = :web)
       Dir.mkdir Directory + '/voices' rescue ''
       case medium
@@ -85,15 +89,16 @@ xfbml: true});
         puts ''
         print 'joining: '
         html = []
+        html << "<html charset='utf-8'><head><title>Silent Voices Bible</title><style>#{kindle_style}</style></head><body>"
         SilentVoices.pages.each_with_index do |page, idx|
-          next if idx > 20
           print '.'
           STDOUT.flush
           page.is_kindle = true
           html << page.view.render(page)
         end
+        html << "</body></html>"
         File.open(Directory + '/kindle.html', 'w') do |f|
-          f.write html.join('<div style="page-break-before: always;"></div>')
+          f.write html.join('<mbp:pagebreak/>')
         end
         puts ''
       end
