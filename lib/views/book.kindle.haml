@@ -1,5 +1,5 @@
 %a{:name => "book_#{number}"}
 %h2.book= name
 
-%h4 Chapters
+%h3 Chapters
 = chapter_pages.map {|chapter| %Q[<a href="#book_#{number}_#{chapter.number}">#{chapter.number.to_i}</a>] }.join(", &nbsp; ")
