@@ -3,6 +3,5 @@
   Chapter
   = number.to_i
 - verses.each do |verse|
-  %p
-    %sup= verse[:number].to_i
-    = verse[:text]
+  %p{:align => 'left'}
+    = "<sup>#{verse[:number].to_i}</sup>#{verse[:text]}"
