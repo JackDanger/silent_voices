@@ -112,8 +112,8 @@ module SilentVoices
         sub(/^(\w)/, ' \1').
         gsub(/ in hers/, ' in her').
         gsub(/ of hers/, ' of her').
-        gsub(/ (him) (#{words_that_only_follow_possesive_pronoun})/i, ' his \2'). # 'him' becomes 'his'
-        gsub(/ (her)s (#{words_that_only_follow_possesive_pronoun})/i, ' \1 \2'). # 'hers' becomes 'her'
+        gsub(/ ((H|h)im) (#{words_that_only_follow_possesive_pronoun})/i, ' \2is \3'). # 'him' becomes 'his'
+        gsub(/ ((H|h)er)s (#{words_that_only_follow_possesive_pronoun})/i, ' \2er \3'). # 'hers' becomes 'her'
         sub(/^ (\w)/, '\1')
     end
 
