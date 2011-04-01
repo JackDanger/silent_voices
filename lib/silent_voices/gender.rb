@@ -24,6 +24,7 @@ module SilentVoices
         'bridesmaids' =>  'groomsmen',
         'bondservant' =>  'bondmaid',
         'bondservants' => 'bondmaids',
+        'houseboy' =>     'handmaid',
         'houseboys' =>    'handmaids',
         'butlers' =>      'maids',
         'menservant' =>   'maidservant',
