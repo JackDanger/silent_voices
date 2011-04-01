@@ -53,7 +53,7 @@ module SilentVoices
 
     def view
       src = is_kindle? ? view_file.chomp('.haml') + '.kindle.haml' : view_file
-      @view ||= Haml::Engine.new(File.read(ViewsDirectory + '/' + src), :filename => src)
+      Haml::Engine.new(File.read(ViewsDirectory + '/' + src), :filename => src)
     end
 
     alias is_kindle? is_kindle
@@ -76,32 +76,37 @@ xfbml: true});
       File.read('kindle.css')
     end
 
-    def self.write_all(medium = :web)
+    def self.write_all(media = [:web])
+      write_web    if media.include? :web
+      write_kindle if media.include? :kindle
+    end
+
+    def self.write_web
       Dir.mkdir Directory + '/voices' rescue ''
-      case medium
-      when :web
-        SilentVoices.pages.each do |page|
-          page.write
-        end
-        puts ''
-        puts "Wrote #{SilentVoices.pages.size} pages"
-      when :kindle
-        puts ''
-        print 'joining: '
-        html = []
-        html << "<html charset='utf-8'><head><title>Silent Voices Bible</title><style>#{kindle_style}</style></head><body>"
-        SilentVoices.pages.each_with_index do |page, idx|
-          print '.'
-          STDOUT.flush
-          page.is_kindle = true
-          html << page.view.render(page)
-        end
-        html << "</body></html>"
-        File.open(Directory + '/kindle.html', 'w') do |f|
-          f.write html.join('<mbp:pagebreak/>')
-        end
-        puts ''
+      SilentVoices.pages.each do |page|
+        page.is_kindle = false
+        page.write
       end
+      puts ''
+      puts "Wrote #{SilentVoices.pages.size} pages"
+    end
+
+    def self.write_kindle
+      puts ''
+      print 'joining: '
+      html = []
+      html << "<html charset='utf-8'><head><title>Silent Voices Bible</title><style>#{kindle_style}</style></head><body>"
+      SilentVoices.pages.each_with_index do |page, idx|
+        print '.'
+        STDOUT.flush
+        page.is_kindle = true
+        html << page.view.render(page)
+      end
+      html << "</body></html>"
+      File.open(Directory + '/kindle.html', 'w') do |f|
+        f.write html.join('<mbp:pagebreak/>')
+      end
+      puts ''
     end
   end
 

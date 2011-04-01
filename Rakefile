@@ -5,14 +5,19 @@ GUTENBERG_SOURCE = File.expand_path File.join(File.dirname(__FILE__), 'vendor', 
 require File.expand_path File.join(File.dirname(__FILE__), 'lib', 'silent_voices')
 
 namespace :build do
-  desc "Build the whole project project"
+  desc "Build the whole project"
   task :all do
-    SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'books').process
+    SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'books').process :web, :kindle
   end
 
   desc "Build an html file for Kindle publishing"
   task :kindle do
     SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'books').process :kindle
+  end
+
+  desc "Build the html files for the web"
+  task :web do
+    SilentVoices::Compiler.new(File.read(GUTENBERG_SOURCE), 'books').process :web
   end
 
   desc "Build the front pages"
