@@ -69,7 +69,7 @@ window.fbAsyncInit = function() {
 FB.init({appId: '186246214732289', status: true, cookie: true,
 xfbml: true});
 };
-</script><fb:like href="http://silentvoicesbible.com/#{path_from(SilentVoices.start_page)}" show_faces="false" width="120" action="like" font="lucida grande" layout="button_count"></fb:like>}
+</script><fb:like href="http://silentvoicesbible.com/#{path_from(SilentVoices.start_page)}" show_faces="false" width="600" action="like" font="lucida grande" layout="button_count"></fb:like>}
     end
 
     def self.kindle_style

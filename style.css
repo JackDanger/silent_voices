@@ -94,7 +94,7 @@ h1, h2, h3 {
 }
 div#facebook_like {
   position: absolute;
-  right: -120px;
+  left: 650px;
   top: 0px;
   text-align: right;
 }
