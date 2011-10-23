@@ -44,6 +44,7 @@ module SilentVoices
         'foreskin' =>     'vulva',
         'adulteress' =>   'adulterer',
         'adulteresses' => 'adulterers',
+        'widow'        => 'widower',
         'prostitute' =>   'philanderer',
         'prostitutes' =>  'philanderers',
         'craftsman' =>    'craftswoman',
