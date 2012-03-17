@@ -76,6 +76,8 @@ module SilentVoices
       {
         'Adam' =>         'Ada',
         'Eve' =>          'Evan',
+        'Cain' =>         'Caina',
+        'Abel' =>         'Abela',
         'Noah' =>         'Noa',
         'Saul' =>         'Saula',
         'David' =>        'Davina',
