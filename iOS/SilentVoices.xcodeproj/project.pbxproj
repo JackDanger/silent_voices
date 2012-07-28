@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		61EA0DE3152EA62F0097F7A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61EA0DE2152EA62F0097F7A6 /* UIKit.framework */; };
+		61EA0DE5152EA62F0097F7A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61EA0DE4152EA62F0097F7A6 /* Foundation.framework */; };
+		61EA0DE7152EA62F0097F7A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61EA0DE6152EA62F0097F7A6 /* CoreGraphics.framework */; };
+		61EA0DED152EA62F0097F7A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 61EA0DEB152EA62F0097F7A6 /* InfoPlist.strings */; };
+		61EA0DEF152EA62F0097F7A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EA0DEE152EA62F0097F7A6 /* main.m */; };
+		61EA0DF3152EA62F0097F7A6 /* SVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EA0DF2152EA62F0097F7A6 /* SVAppDelegate.m */; };
+		61EA0DF6152EA62F0097F7A6 /* SVRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EA0DF5152EA62F0097F7A6 /* SVRootViewController.m */; };
+		61EA0DF9152EA62F0097F7A6 /* SVDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EA0DF8152EA62F0097F7A6 /* SVDataViewController.m */; };
+		61EA0DFC152EA62F0097F7A6 /* SVModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EA0DFB152EA62F0097F7A6 /* SVModelController.m */; };
+		61EA0DFF152EA62F0097F7A6 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61EA0DFD152EA62F0097F7A6 /* MainStoryboard_iPhone.storyboard */; };
+		61EA0E02152EA62F0097F7A6 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61EA0E00152EA62F0097F7A6 /* MainStoryboard_iPad.storyboard */; };
+		61EA0E0A152EA62F0097F7A6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61EA0E09152EA62F0097F7A6 /* SenTestingKit.framework */; };
+		61EA0E0B152EA62F0097F7A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61EA0DE2152EA62F0097F7A6 /* UIKit.framework */; };
+		61EA0E0C152EA62F0097F7A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61EA0DE4152EA62F0097F7A6 /* Foundation.framework */; };
+		61EA0E14152EA62F0097F7A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 61EA0E12152EA62F0097F7A6 /* InfoPlist.strings */; };
+		61EA0E17152EA62F0097F7A6 /* SilentVoicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EA0E16152EA62F0097F7A6 /* SilentVoicesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		61EA0E0D152EA62F0097F7A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61EA0DD5152EA62E0097F7A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61EA0DDD152EA62E0097F7A6;
+			remoteInfo = SilentVoices;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		61EA0DDE152EA62F0097F7A6 /* SilentVoices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SilentVoices.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61EA0DE2152EA62F0097F7A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		61EA0DE4152EA62F0097F7A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		61EA0DE6152EA62F0097F7A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		61EA0DEA152EA62F0097F7A6 /* SilentVoices-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SilentVoices-Info.plist"; sourceTree = "<group>"; };
+		61EA0DEC152EA62F0097F7A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		61EA0DEE152EA62F0097F7A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		61EA0DF0152EA62F0097F7A6 /* SilentVoices-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SilentVoices-Prefix.pch"; sourceTree = "<group>"; };
+		61EA0DF1152EA62F0097F7A6 /* SVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVAppDelegate.h; sourceTree = "<group>"; };
+		61EA0DF2152EA62F0097F7A6 /* SVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVAppDelegate.m; sourceTree = "<group>"; };
+		61EA0DF4152EA62F0097F7A6 /* SVRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVRootViewController.h; sourceTree = "<group>"; };
+		61EA0DF5152EA62F0097F7A6 /* SVRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVRootViewController.m; sourceTree = "<group>"; };
+		61EA0DF7152EA62F0097F7A6 /* SVDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVDataViewController.h; sourceTree = "<group>"; };
+		61EA0DF8152EA62F0097F7A6 /* SVDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVDataViewController.m; sourceTree = "<group>"; };
+		61EA0DFA152EA62F0097F7A6 /* SVModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVModelController.h; sourceTree = "<group>"; };
+		61EA0DFB152EA62F0097F7A6 /* SVModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVModelController.m; sourceTree = "<group>"; };
+		61EA0DFE152EA62F0097F7A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		61EA0E01152EA62F0097F7A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		61EA0E08152EA62F0097F7A6 /* SilentVoicesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SilentVoicesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61EA0E09152EA62F0097F7A6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		61EA0E11152EA62F0097F7A6 /* SilentVoicesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SilentVoicesTests-Info.plist"; sourceTree = "<group>"; };
+		61EA0E13152EA62F0097F7A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		61EA0E15152EA62F0097F7A6 /* SilentVoicesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SilentVoicesTests.h; sourceTree = "<group>"; };
+		61EA0E16152EA62F0097F7A6 /* SilentVoicesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SilentVoicesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61EA0DDB152EA62E0097F7A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EA0DE3152EA62F0097F7A6 /* UIKit.framework in Frameworks */,
+				61EA0DE5152EA62F0097F7A6 /* Foundation.framework in Frameworks */,
+				61EA0DE7152EA62F0097F7A6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61EA0E04152EA62F0097F7A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EA0E0A152EA62F0097F7A6 /* SenTestingKit.framework in Frameworks */,
+				61EA0E0B152EA62F0097F7A6 /* UIKit.framework in Frameworks */,
+				61EA0E0C152EA62F0097F7A6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61EA0DD3152EA62E0097F7A6 = {
+			isa = PBXGroup;
+			children = (
+				61EA0DE8152EA62F0097F7A6 /* SilentVoices */,
+				61EA0E0F152EA62F0097F7A6 /* SilentVoicesTests */,
+				61EA0DE1152EA62F0097F7A6 /* Frameworks */,
+				61EA0DDF152EA62F0097F7A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61EA0DDF152EA62F0097F7A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61EA0DDE152EA62F0097F7A6 /* SilentVoices.app */,
+				61EA0E08152EA62F0097F7A6 /* SilentVoicesTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61EA0DE1152EA62F0097F7A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61EA0DE2152EA62F0097F7A6 /* UIKit.framework */,
+				61EA0DE4152EA62F0097F7A6 /* Foundation.framework */,
+				61EA0DE6152EA62F0097F7A6 /* CoreGraphics.framework */,
+				61EA0E09152EA62F0097F7A6 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61EA0DE8152EA62F0097F7A6 /* SilentVoices */ = {
+			isa = PBXGroup;
+			children = (
+				61EA0DF1152EA62F0097F7A6 /* SVAppDelegate.h */,
+				61EA0DF2152EA62F0097F7A6 /* SVAppDelegate.m */,
+				61EA0DF4152EA62F0097F7A6 /* SVRootViewController.h */,
+				61EA0DF5152EA62F0097F7A6 /* SVRootViewController.m */,
+				61EA0DF7152EA62F0097F7A6 /* SVDataViewController.h */,
+				61EA0DF8152EA62F0097F7A6 /* SVDataViewController.m */,
+				61EA0DFA152EA62F0097F7A6 /* SVModelController.h */,
+				61EA0DFB152EA62F0097F7A6 /* SVModelController.m */,
+				61EA0DFD152EA62F0097F7A6 /* MainStoryboard_iPhone.storyboard */,
+				61EA0E00152EA62F0097F7A6 /* MainStoryboard_iPad.storyboard */,
+				61EA0DE9152EA62F0097F7A6 /* Supporting Files */,
+			);
+			path = SilentVoices;
+			sourceTree = "<group>";
+		};
+		61EA0DE9152EA62F0097F7A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				61EA0DEA152EA62F0097F7A6 /* SilentVoices-Info.plist */,
+				61EA0DEB152EA62F0097F7A6 /* InfoPlist.strings */,
+				61EA0DEE152EA62F0097F7A6 /* main.m */,
+				61EA0DF0152EA62F0097F7A6 /* SilentVoices-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		61EA0E0F152EA62F0097F7A6 /* SilentVoicesTests */ = {
+			isa = PBXGroup;
+			children = (
+				61EA0E15152EA62F0097F7A6 /* SilentVoicesTests.h */,
+				61EA0E16152EA62F0097F7A6 /* SilentVoicesTests.m */,
+				61EA0E10152EA62F0097F7A6 /* Supporting Files */,
+			);
+			path = SilentVoicesTests;
+			sourceTree = "<group>";
+		};
+		61EA0E10152EA62F0097F7A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				61EA0E11152EA62F0097F7A6 /* SilentVoicesTests-Info.plist */,
+				61EA0E12152EA62F0097F7A6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61EA0DDD152EA62E0097F7A6 /* SilentVoices */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61EA0E1A152EA62F0097F7A6 /* Build configuration list for PBXNativeTarget "SilentVoices" */;
+			buildPhases = (
+				61EA0DDA152EA62E0097F7A6 /* Sources */,
+				61EA0DDB152EA62E0097F7A6 /* Frameworks */,
+				61EA0DDC152EA62E0097F7A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SilentVoices;
+			productName = SilentVoices;
+			productReference = 61EA0DDE152EA62F0097F7A6 /* SilentVoices.app */;
+			productType = "com.apple.product-type.application";
+		};
+		61EA0E07152EA62F0097F7A6 /* SilentVoicesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61EA0E1D152EA62F0097F7A6 /* Build configuration list for PBXNativeTarget "SilentVoicesTests" */;
+			buildPhases = (
+				61EA0E03152EA62F0097F7A6 /* Sources */,
+				61EA0E04152EA62F0097F7A6 /* Frameworks */,
+				61EA0E05152EA62F0097F7A6 /* Resources */,
+				61EA0E06152EA62F0097F7A6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61EA0E0E152EA62F0097F7A6 /* PBXTargetDependency */,
+			);
+			name = SilentVoicesTests;
+			productName = SilentVoicesTests;
+			productReference = 61EA0E08152EA62F0097F7A6 /* SilentVoicesTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61EA0DD5152EA62E0097F7A6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 61EA0DD8152EA62E0097F7A6 /* Build configuration list for PBXProject "SilentVoices" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 61EA0DD3152EA62E0097F7A6;
+			productRefGroup = 61EA0DDF152EA62F0097F7A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61EA0DDD152EA62E0097F7A6 /* SilentVoices */,
+				61EA0E07152EA62F0097F7A6 /* SilentVoicesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61EA0DDC152EA62E0097F7A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EA0DED152EA62F0097F7A6 /* InfoPlist.strings in Resources */,
+				61EA0DFF152EA62F0097F7A6 /* MainStoryboard_iPhone.storyboard in Resources */,
+				61EA0E02152EA62F0097F7A6 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61EA0E05152EA62F0097F7A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EA0E14152EA62F0097F7A6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		61EA0E06152EA62F0097F7A6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61EA0DDA152EA62E0097F7A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EA0DEF152EA62F0097F7A6 /* main.m in Sources */,
+				61EA0DF3152EA62F0097F7A6 /* SVAppDelegate.m in Sources */,
+				61EA0DF6152EA62F0097F7A6 /* SVRootViewController.m in Sources */,
+				61EA0DF9152EA62F0097F7A6 /* SVDataViewController.m in Sources */,
+				61EA0DFC152EA62F0097F7A6 /* SVModelController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61EA0E03152EA62F0097F7A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61EA0E17152EA62F0097F7A6 /* SilentVoicesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		61EA0E0E152EA62F0097F7A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61EA0DDD152EA62E0097F7A6 /* SilentVoices */;
+			targetProxy = 61EA0E0D152EA62F0097F7A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		61EA0DEB152EA62F0097F7A6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61EA0DEC152EA62F0097F7A6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		61EA0DFD152EA62F0097F7A6 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61EA0DFE152EA62F0097F7A6 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		61EA0E00152EA62F0097F7A6 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61EA0E01152EA62F0097F7A6 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		61EA0E12152EA62F0097F7A6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61EA0E13152EA62F0097F7A6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61EA0E18152EA62F0097F7A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		61EA0E19152EA62F0097F7A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61EA0E1B152EA62F0097F7A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SilentVoices/SilentVoices-Prefix.pch";
+				INFOPLIST_FILE = "SilentVoices/SilentVoices-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		61EA0E1C152EA62F0097F7A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SilentVoices/SilentVoices-Prefix.pch";
+				INFOPLIST_FILE = "SilentVoices/SilentVoices-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		61EA0E1E152EA62F0097F7A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SilentVoices.app/SilentVoices";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SilentVoices/SilentVoices-Prefix.pch";
+				INFOPLIST_FILE = "SilentVoicesTests/SilentVoicesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		61EA0E1F152EA62F0097F7A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SilentVoices.app/SilentVoices";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SilentVoices/SilentVoices-Prefix.pch";
+				INFOPLIST_FILE = "SilentVoicesTests/SilentVoicesTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61EA0DD8152EA62E0097F7A6 /* Build configuration list for PBXProject "SilentVoices" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61EA0E18152EA62F0097F7A6 /* Debug */,
+				61EA0E19152EA62F0097F7A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61EA0E1A152EA62F0097F7A6 /* Build configuration list for PBXNativeTarget "SilentVoices" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61EA0E1B152EA62F0097F7A6 /* Debug */,
+				61EA0E1C152EA62F0097F7A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		61EA0E1D152EA62F0097F7A6 /* Build configuration list for PBXNativeTarget "SilentVoicesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61EA0E1E152EA62F0097F7A6 /* Debug */,
+				61EA0E1F152EA62F0097F7A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61EA0DD5152EA62E0097F7A6 /* Project object */;
+}
