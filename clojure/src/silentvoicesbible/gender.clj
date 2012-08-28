@@ -1,7 +1,7 @@
 (ns silentvoicesbible.gender
-  (:require feminizer.core)
-  (:use [clojure.string :only [split join]]))
+  (:use feminizer.core))
 
-(defn pairs [file]
-  (map #(split % #"<->") (split (slurp file) #"\n")))
+
+(defn learn-tanakh-forms []
+  (learn "man" "woman"))
 
