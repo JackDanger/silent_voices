@@ -1,4 +1,5 @@
 clojure/.lein-deps-sum
+clojure/.lein-failures
 clojure/lib
 clojure/classes/*
 clojure/target
