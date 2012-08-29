@@ -1,7 +1,6 @@
 (ns feminizer.core
   (:use [clojure.string :only [split join]])
   (:use clojure.test)
-  (:require feminizer.default_forms)
   (:gen-class
     :name com.feminizer
     :methods [
@@ -27,18 +26,11 @@
                              (map #(str "(" % ")")
                                   (keys @forms))))))
 
-(defn- each-pair [fn pairs]
-  (dosync (loop [[male female & more] pairs]
-            (alter forms fn male female female male)
-            (if more
-              (recur more)))
-          (set-regexes)))
+(defn learn [form replacement]
+  (dosync (alter forms assoc form replacement)))
 
-(defn learn [& pairs]
-  (each-pair assoc pairs))
-
-(defn forget [& pairs]
-  (each-pair dissoc pairs))
+(defn forget [& all]
+  (dosync (map #(alter forms dissoc %) all)))
 
 (defn feminize [text]
   (_replace
@@ -52,27 +44,18 @@
     #" (.*) "
     (fn [[_ s]] s))) ; strip normalized whitespace
 
-; add default forms at load 
-(apply learn (feminizer.default_forms/forms))
-
-; export these to Java
-(defn -learn    [& args] (apply learn    args))
-(defn -forget   [& args] (apply forget   args))
-(defn -feminize [& args] (apply feminize args))
-
 
 (deftest t
-  (testing "feminize"
-    (testing "with default forms"
-      (is (= (feminize "man, (king) is not a woman or a queen.")
-                       "woman, (queen) is not a man or a king."))))
   (testing "learn"
-    (is (=           "she's got ovaries"
-           (feminize "he's got ovaries")))
+    (is (=           "she's got testes, not ovaries"
+           (feminize "he's got testes, not ovaries")))
+    (learn "testes" "ovaries")
+    (is (=           "she's got ovaries, not ovaries"
+           (feminize "he's got testes, not ovaries")))
     (learn "ovaries" "testes")
-    (is (=           "she's got ovaries"
-           (feminize "he's got testes")))
-    (is (= "she's got ovaries" (feminize (feminize "she's got ovaries")))))
+    (is (=           "she's got ovaries, not testes"
+           (feminize "he's got testes, not ovaries")))
+    (is (= "she's got ovaries, not testes" (feminize (feminize "she's got ovaries, not testes")))))
 
   (testing "forget"
     (is (=           "this lady is crazy for that gentleman"

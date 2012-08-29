@@ -1,7 +1,12 @@
 (ns silentvoicesbible.gender
-  (:use feminizer.core))
+  (:use feminizer.core :only [feminize])
+  (:use feminizer.forms))
 
+(def tanakh-forms
+  (filter
+    #(< 0 (count %))
+    (clojure.string/split (slurp tanakh-form-file) #"[\n ]+")))
 
-(defn learn-tanakh-forms []
-  (learn "man" "woman"))
-
+(defn setup []
+  (learn-from "resources/default.forms")
+  (learn-from "resources/tanakh.forms"))

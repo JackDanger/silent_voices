@@ -1,8 +1,4 @@
-(ns feminizer.default_forms
-  (:require clojure.string))
-
-(def _forms
-"man woman
+man woman
 men women
 manhood womanhood
 male female
@@ -25,6 +21,7 @@ boys girls
 son daughter
 sons daughters
 he she
+# note: perhaps I should do all the "(.*) him" pairs individually?
 his hers
 him her
 himself herself
@@ -42,6 +39,8 @@ priest priestess
 husband wife
 husbands wives
 fishermen fisherwomen
+horseman horsewoman
+horsemen horsewomen
 kinsman kinswoman
 nobleman noblewoman
 lord domina
@@ -55,9 +54,4 @@ kings queens
 father mother
 fathers mothers
 brother sister
-brothers sisters"
-)
-
-
-(defn forms []
-  (clojure.string/split _forms #"[\n ]+"))
+brothers sisters

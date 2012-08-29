@@ -1,10 +1,14 @@
 (ns silentvoicesbible.core
+  (:require silentvoicesbible.gender)
   (:use silentvoicesbible.books))
 
 (defn -main [ & args ]
-  (println (:name (last tanakh)))
+  (silentvoicesbible.gender/setup)
+
   (doall
-    (for [verse (take 20 (:verses (last tanakh)))]
-      (println "\n" (.text verse) "\n" (.translated verse))))
+    (for [book tanakh]
+      (doall
+        (for [verse (:verses book)]
+          (println "\n" (.translated verse))))))
   ""
 )
