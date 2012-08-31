@@ -27,10 +27,14 @@
                                   (keys @forms))))))
 
 (defn learn [form replacement]
-  (dosync (alter forms assoc form replacement)))
+  (dosync
+    (alter forms assoc form replacement)
+    (set-regexes)))
 
 (defn forget [& all]
-  (dosync (map #(alter forms dissoc %) all)))
+  (dosync
+    (map #(alter forms dissoc %) all)
+    (set-regexes)))
 
 (defn feminize [text]
   (_replace
