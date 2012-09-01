@@ -1,16 +1,23 @@
 (ns silentvoicesbible.books
   (:use clojure.test)
+  (:use silentvoicesbible.jps)
   (:require [net.cgrand.enlive-html :as html])
   (:require silentvoicesbible.gender)
   (:require feminizer.core))
 
 (defprotocol Translatable
   (translated [this]))
+(defprotocol JPSFormatted
+  (html [this])
+  (text [this]))
 
 (defrecord Book [name, verses])
-(defrecord Verse [chapter verse text]
+(defrecord Verse [chapter verse source]
   Translatable
-  (translated [this] (feminizer.core/feminize (:text this))))
+  JPSFormatted
+  (translated [this] (feminizer.core/feminize (:source this)))
+  (html [this] (jps-html (:source this)))
+  (text [this] (jps-text (:source this))))
 
 (def booklist (sorted-map
   "et01" "Genesis"
@@ -76,18 +83,26 @@
 
 (deftest test-books
   (feminizer.core/learn "man" "woman")
-  (testing "tanakh books"
+  (testing "books"
     (is (= "Genesis" (:name (first tanakh))))
     (is (= "Nehemiah" (:name (last tanakh))))
   )
-  (testing "tanakh verse"
-    (let [text (:text (first (:verses (first tanakh))))]
-      (is (= "In the beginning God created the heaven and the earth." text)))
-    (let [text (:text (first (:verses (nth tanakh 26))))]
-      (is (= "There was a man in the land of Uz, whose name was Job; and that man was whole-hearted and upright, and one that feared God, and shunned evil." text)))
+  (testing "verse"
+    (is (= "In the beginning God created the heaven and the earth."
+           (:source (first (:verses (first tanakh))))))
+    (is (= "There was a man in the land of Uz, whose name was Job; and that man was whole-hearted and upright, and one that feared God, and shunned evil."
+           (:source (first (:verses (nth tanakh 26))))))
   )
-  (testing "tanakh translated verse"
-    (let [text (.translated (first (:verses (nth tanakh 26))))]
-      (is (= "There was a woman in the land of Uz, whose name was Job; and that woman was whole-hearted and upright, and one that feared God, and shunned evil." text)))
+  (testing "translated verse"
+    (is (= "There was a woman in the land of Uz, whose name was Job; and that woman was whole-hearted and upright, and one that feared God, and shunned evil."
+           (.translated (first (:verses (nth tanakh 26))))))
+  )
+  (testing ".text"
+    (is (= "   A time to love,   and a time to hate;\n   a time for war,   and a time for peace.\n"
+           (.text (nth (:verses (nth tanakh 30)) 51))))
+  )
+  (testing ".html"
+    (is (= " &nbsp; A time to love, &nbsp; and a time to hate;<br /> &nbsp; a time for war, &nbsp; and a time for peace.<br />"
+           (.html (nth (:verses (nth tanakh 30)) 51))))
   )
 )
