@@ -1,4 +1,5 @@
 (ns silentvoicesbible.books
+  (:use clojure.test)
   (:require [net.cgrand.enlive-html :as html])
   (:require silentvoicesbible.gender)
   (:require feminizer.core))
@@ -72,3 +73,21 @@
 
 (def tanakh (map book (seq booklist)))
 
+
+(deftest test-books
+  (feminizer.core/learn "man" "woman")
+  (testing "tanakh books"
+    (is (= "Genesis" (:name (first tanakh))))
+    (is (= "Nehemiah" (:name (last tanakh))))
+  )
+  (testing "tanakh verse"
+    (let [text (:text (first (:verses (first tanakh))))]
+      (is (= "In the beginning God created the heaven and the earth." text)))
+    (let [text (:text (first (:verses (nth tanakh 26))))]
+      (is (= "There was a man in the land of Uz, whose name was Job; and that man was whole-hearted and upright, and one that feared God, and shunned evil." text)))
+  )
+  (testing "tanakh translated verse"
+    (let [text (.translated (first (:verses (nth tanakh 26))))]
+      (is (= "There was a woman in the land of Uz, whose name was Job; and that woman was whole-hearted and upright, and one that feared God, and shunned evil." text)))
+  )
+)

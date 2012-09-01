@@ -6,9 +6,6 @@
   (silentvoicesbible.gender/setup)
 
   (doall
-    (for [book tanakh]
-      (doall
-        (for [verse (:verses book)]
-          (println "\n" (.translated verse))))))
-  ""
+    (for [verse (:verses (first tanakh))]
+      (println (.translated verse))))
 )
