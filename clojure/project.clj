@@ -4,4 +4,5 @@
                  [org.clojure/clojure "1.5.0-alpha4"]
                  [enlive "1.0.0"]
                 ]
+  :aot :all
   :main silentvoicesbible.core)
