@@ -5,20 +5,6 @@
   (:require silentvoicesbible.gender)
   (:require feminizer.core))
 
-(defprotocol Translatable
-  (translated [this]))
-(defprotocol JPSFormatted
-  (html [this])
-  (text [this]))
-
-(defrecord Book [name, verses])
-(defrecord Verse [chapter verse source]
-  Translatable
-  JPSFormatted
-  (translated [this] (feminizer.core/feminize (:source this)))
-  (html [this] (jps-html (:source this)))
-  (text [this] (jps-text (:source this))))
-
 (def booklist (sorted-map
   "et01" "Genesis"
   "et02" "Exodus"
@@ -54,12 +40,38 @@
   "et32" "Lamentations"
   "et33" "Esther"
   "et34" "Daniel"
-  "et36_ezra" "Ezra"
-  "et37_nehemiah" "Nehemiah"
- ))
+  "et35" "Ezra / Nehemiah"
+))
 
+(defprotocol JPSFormatted
+  (html [this])
+  (text [this]))
+(defprotocol Chaptered
+  (verse [this idx])
+  (verses [this]))
 
-(defn- text [filename]
+(defrecord Book [name chapters]
+  Chaptered
+  (verse [this idx]
+    "Lookup a passage in a book by chapter/verse"
+    (if (= 2 (count idx))
+      (.verse this [nil (first idx) (second idx)]) ; 'volume' is an optional argument
+      (let [[volume chapter number] idx]
+        (some
+          #(if (= [  volume       chapter       number]
+                  [(:volume %1) (:chapter %1) (:number %1)])
+               %1)
+          (.verses this)))))
+  (verses [this]
+    (flatten (map :verses (:chapters this)))))
+
+(defrecord Chapter [number verses])
+(defrecord Verse [volume chapter number source]
+  JPSFormatted
+  (html [this] (feminizer.core/feminize (jps-html (:source this))))
+  (text [this] (feminizer.core/feminize (jps-text (:source this)))))
+
+(defn- book-text [filename]
   (html/text
     (first
       (html/select
@@ -70,39 +82,50 @@
   (rest
     (filter
       #(< 0 (count %))
-      (clojure.string/split (text filename) #"\n"))))
+      (clojure.string/split (book-text filename) #"\n"))))
 
 (defn- parse-verse [line]
-  (apply ->Verse (rest (re-find #"^(\d+),(\d+) (.*)$" line))))
+  (try
+    (let [parts (drop 2 (re-find #"^(([12EN]).)?(\d+),(\d+) (.*)$" line))]
+      (let [source (last parts)       ; we want volume/chapter/verse to be integers
+            index  (map #(if (seq %1) (Integer/parseInt %1) %1) (take 3 parts))]
+        (apply ->Verse (concat index [source]))))
+    (catch Exception e (prn (str line "\n" e)))))
+
+(defn- chapter [verses]
+  (->Chapter (:chapter (first verses)) verses))
 
 (defn- book [[filename name]]
-  (->Book name (map parse-verse (lines filename))))
+  (->Book name (map chapter (partition-by :chapter (map parse-verse (lines filename))))))
 
+
+; this defines the entire lazily-loaded bible object
 (def tanakh (map book (seq booklist)))
 
 
 (deftest test-books
+
   (feminizer.core/learn "man" "woman")
+
   (testing "books"
     (is (= "Genesis" (:name (first tanakh))))
-    (is (= "Nehemiah" (:name (last tanakh))))
-  )
-  (testing "verse"
-    (is (= "In the beginning God created the heaven and the earth."
-           (:source (first (:verses (first tanakh))))))
-    (is (= "There was a man in the land of Uz, whose name was Job; and that man was whole-hearted and upright, and one that feared God, and shunned evil."
-           (:source (first (:verses (nth tanakh 26))))))
-  )
-  (testing "translated verse"
-    (is (= "There was a woman in the land of Uz, whose name was Job; and that woman was whole-hearted and upright, and one that feared God, and shunned evil."
-           (.translated (first (:verses (nth tanakh 26))))))
-  )
-  (testing ".text"
-    (is (= "   A time to love,   and a time to hate;\n   a time for war,   and a time for peace.\n"
-           (.text (nth (:verses (nth tanakh 30)) 51))))
-  )
-  (testing ".html"
-    (is (= " &nbsp; A time to love, &nbsp; and a time to hate;<br /> &nbsp; a time for war, &nbsp; and a time for peace.<br />"
-           (.html (nth (:verses (nth tanakh 30)) 51))))
-  )
-)
+    (is (= "Ezra / Nehemiah" (:name (last tanakh)))))
+
+  (testing "book parts"
+    (let [job          (nth tanakh 26)
+          genesis      (nth tanakh 0)
+          ecclesiastes (nth tanakh 30)]
+      (testing "verse"
+        (is (= "In the beginning God created the heaven and the earth."
+               (:source (first (.verses genesis)))))
+        (is (= "There was a man in the land of Uz, whose name was Job; and that man was whole-hearted and upright, and one that feared God, and shunned evil."
+               (:source (first (.verses job))))))
+      (testing "feminized verse"
+        (is (= "There was a woman in the land of Uz, whose name was Job; and that woman was whole-hearted and upright, and one that feared God, and shunned evil."
+               (.text (.verse job [1 1])))))
+      (testing ".text"
+        (is (= "   A time to love,   and a time to hate;\n   a time for war,   and a time for peace.\n"
+               (.text (.verse ecclesiastes [3 8])))))
+      (testing ".html"
+        (is (= " &nbsp; A time to love, &nbsp; and a time to hate;<br /> &nbsp; a time for war, &nbsp; and a time for peace.<br />"
+               (.html (.verse ecclesiastes [3 8]))))))))

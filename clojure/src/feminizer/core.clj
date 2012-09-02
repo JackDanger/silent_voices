@@ -1,5 +1,5 @@
 (ns feminizer.core
-  (:use [clojure.string :only [split join]])
+  (:use [clojure.string :only [split split-lines join]])
   (:use clojure.test)
   (:gen-class
     :name com.feminizer
@@ -40,19 +40,21 @@
 (learn "_not_empty" "_not_empty")
 
 (defn- feminize-line [text]
-  (_replace
-    (_replace (str " " text " ") ; normalize string initial/final terms
-              @loose-regex
-              (fn [match]
-                (_replace match
-                          @tight-regex
-                          (fn [[exact-match & _]]
-                            (@forms exact-match)))))
-    #" (.*) "
-    (fn [[_ s]] s))) ; strip normalized whitespace
+  (if (re-find #"^\s*$" text)
+      text ; don't try to translate blank lines
+      (_replace
+        (_replace (str " " text " ") ; normalize string initial/final terms
+                  @loose-regex
+                  (fn [match]
+                    (_replace match
+                              @tight-regex
+                              (fn [[exact-match & _]]
+                                (@forms exact-match)))))
+        #" (.*) "
+        (fn [[_ s]] s)))) ; strip normalized whitespace
 
-(defn feminize [text]
-  (join "\n" (map feminize-line (split text #"\n")) ))
+(defn feminize [text]            ; split-lines loses trailing blank lines :(
+  (join "\n" (map feminize-line (butlast (split-lines (str text "\n."))))))
 
 
 (deftest test-feminizer.core
@@ -75,5 +77,9 @@
     (forget "lady")
     (forget "gentleman")
     (is (=           "this lady is crazy for that gentleman"
-           (feminize "this lady is crazy for that gentleman")))))
+           (feminize "this lady is crazy for that gentleman"))))
+  (testing "whitespace"
+    (is (=        "   3 spaces preceed and two newlines follow\n\n"
+        (feminize "   3 spaces preceed and two newlines follow\n\n")))))
+
 
