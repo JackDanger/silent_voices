@@ -31,12 +31,15 @@
     (alter forms assoc form replacement)
     (set-regexes)))
 
-(defn forget [& all]
+(defn forget [form]
   (dosync
-    (map #(alter forms dissoc %) all)
+    (alter forms dissoc form)
     (set-regexes)))
 
-(defn feminize [text]
+; define bootstrap forms (so the operations don't throw error)
+(learn "_not_empty" "_not_empty")
+
+(defn- feminize-line [text]
   (_replace
     (_replace (str " " text " ") ; normalize string initial/final terms
               @loose-regex
@@ -48,23 +51,29 @@
     #" (.*) "
     (fn [[_ s]] s))) ; strip normalized whitespace
 
+(defn feminize [text]
+  (join "\n" (map feminize-line (split text #"\n")) ))
 
-(deftest t
-  (testing "learn"
-    (is (=           "she's got testes, not ovaries"
-           (feminize "he's got testes, not ovaries")))
-    (learn "testes" "ovaries")
-    (is (=           "she's got ovaries, not ovaries"
-           (feminize "he's got testes, not ovaries")))
-    (learn "ovaries" "testes")
-    (is (=           "she's got ovaries, not testes"
-           (feminize "he's got testes, not ovaries")))
-    (is (= "she's got ovaries, not testes" (feminize (feminize "she's got ovaries, not testes")))))
+
+(deftest test-feminizer.core
+;  (testing "learn"
+;    (is (=           "she's got testes, not ovaries"
+;           (feminize "he's got testes, not ovaries")))
+;    (learn "testes" "ovaries")
+;    (is (=           "she's got ovaries, not ovaries"
+;           (feminize "he's got testes, not ovaries")))
+;    (learn "ovaries" "testes")
+;    (is (=           "she's got ovaries, not testes"
+;           (feminize "he's got testes, not ovaries")))
+;    (is (= "she's got ovaries, not testes" (feminize (feminize "she's got ovaries, not testes")))))
 
   (testing "forget"
+    (learn "lady" "gentleman")
+    (learn "gentleman" "lady")
     (is (=           "this lady is crazy for that gentleman"
            (feminize "this gentleman is crazy for that lady")))
-    (forget "lady" "gentleman")
+    (forget "lady")
+    (forget "gentleman")
     (is (=           "this lady is crazy for that gentleman"
            (feminize "this lady is crazy for that gentleman")))))
 
