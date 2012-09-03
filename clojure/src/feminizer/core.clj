@@ -59,15 +59,16 @@
 
 (deftest test-feminizer.core
   (testing "learn"
-    (is (=           "she's got testes, not ovaries"
-           (feminize "he's got testes, not ovaries")))
+    (is (=           "testes, not ovaries"
+           (feminize "testes, not ovaries")))
     (learn "testes" "ovaries")
-    (is (=           "she's got ovaries, not ovaries"
-           (feminize "he's got testes, not ovaries")))
+    (is (=           "ovaries, not ovaries"
+           (feminize "testes, not ovaries")))
     (learn "ovaries" "testes")
-    (is (=           "she's got ovaries, not testes"
-           (feminize "he's got testes, not ovaries")))
-    (is (= "she's got ovaries, not testes" (feminize (feminize "she's got ovaries, not testes")))))
+    (is (=           "ovaries, not testes"
+           (feminize "testes, not ovaries")))
+    ; check the round-trip
+    (is (= "ovaries, not testes" (feminize (feminize "ovaries, not testes")))))
 
   (testing "forget"
     (learn "lady" "gentleman")
