@@ -53,8 +53,8 @@
         #" (.*) "
         (fn [[_ s]] s)))) ; strip normalized whitespace
 
-(defn feminize [text]            ; split-lines loses trailing blank lines :(
-  (join "\n" (map feminize-line (butlast (split-lines (str text "\n."))))))
+(defn feminize [text]
+  (join "\n" (map feminize-line (split text #"\n" -1))))
 
 
 (deftest test-feminizer.core
