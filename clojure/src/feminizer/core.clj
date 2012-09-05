@@ -16,15 +16,25 @@
 (def tight-regex (ref #""))
 (def forms (ref {}))
 
+(defn- case-fix [found replaced]
+  (if (re-find #"[A-Z]" (str (first found)))
+    (str (.toUpperCase (str (first replaced))) (join (rest replaced)))
+    replaced))
+
+(def swap-form (fn [[case-sensitive-match & _]]
+  (case-fix case-sensitive-match (@forms (.toLowerCase case-sensitive-match)))))
+
 (defn- set-regexes []
   (ref-set loose-regex
-           (re-pattern (join "|"
-                             (map #(str word-boundary % word-boundary)
-                                  (keys @forms)))))
+           (re-pattern (str "(?i)"
+                            (join "|"
+                                  (map #(str word-boundary % word-boundary)
+                                       (keys @forms))))))
   (ref-set tight-regex
-           (re-pattern (join "|"
-                             (map #(str "(" % ")")
-                                  (keys @forms))))))
+           (re-pattern (str "(?i)"
+                            (join "|"
+                                  (map #(str "(" % ")")
+                                       (keys @forms)))))))
 
 (defn learn [form replacement]
   (dosync
@@ -48,8 +58,7 @@
                   (fn [match]
                     (_replace match
                               @tight-regex
-                              (fn [[exact-match & _]]
-                                (@forms exact-match)))))
+                              swap-form)))
         #" (.*) "
         (fn [[_ s]] s)))) ; strip normalized whitespace
 
