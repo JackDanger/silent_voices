@@ -1,37 +1,30 @@
 (ns silentvoicesbible.core
   (:gen-class)
   (:require silentvoicesbible.html)
-  (:require silentvoicesbible.gender)
-  (:require feminizer.core)
+  (:require feminizer.forms)
   (:require silentvoicesbible.jps)
   (:use silentvoicesbible.books))
 
-(defn- gets [prompt]
-  (print prompt)
+(defn- -gets [prompt]
+  (println "in -gets")
+  (println prompt)
   (let [reader (java.io.BufferedReader. (java.io.InputStreamReader. (System/in)))]
+    (println "in let")
     (loop [_ nil]
+      (print ".")
       (if (.ready reader)
           (.readLine reader)
-          (recur (Thread/sleep 1))))))
+          (recur (Thread/sleep 10))))))
 
 (defn- browse []
-  (gets "click any key to start reading the Silent Voices Tanakh")
+  (println "in browse")
+  (-gets "click any key to start reading the Silent Voices Tanakh")
   (doseq [verse (:verses (first tanakh))]
-    (println (.text verse))
-    (gets)))
+    (print (-gets "") (.text verse))))
 
 (defn -main [ & args ]
-  (silentvoicesbible.gender/setup)
-
-  (let [ecc (nth tanakh 30)]
-    (let [source (:source (.verse ecc [3 8]))]
-      (println source)
-      (println "after source")
-      (println (silentvoicesbible.jps/jps-text source))
-      (println "after jps")
-      (println (feminizer.core/feminize (silentvoicesbible.jps/jps-text source))))
-      (println "after feminize")
-    (println (.text (.verse ecc [3 8]))))
+  (feminizer.forms/learn-from "resources/default.forms")
+  (feminizer.forms/learn-from "resources/tanakh.forms")
 
   (if (= "browse" (first args))
     (browse))

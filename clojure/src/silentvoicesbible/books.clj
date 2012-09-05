@@ -2,7 +2,6 @@
   (:use clojure.test)
   (:use silentvoicesbible.jps)
   (:require [net.cgrand.enlive-html :as html])
-  (:require silentvoicesbible.gender)
   (:require feminizer.core))
 
 (def booklist (sorted-map
@@ -87,8 +86,8 @@
 (defn- parse-verse [line]
   (try
     (let [parts (drop 2 (re-find #"^(([12EN]).)?(\d+),(\d+) (.*)$" line))]
-      (let [source (last parts)       ; we want volume/chapter/verse to be integers
-            index  (map #(if (seq %1) (Integer/parseInt %1) %1) (take 3 parts))]
+      (let [source (last parts)       ; we want hapter/verse to be integers
+            index  (take 3 parts)]
         (apply ->Verse (concat index [source]))))
     (catch Exception e (prn (str line "\n" e)))))
 
@@ -122,10 +121,10 @@
                (:source (first (.verses job))))))
       (testing "feminized verse"
         (is (= "There was a woman in the land of Uz, whose name was Job; and that woman was whole-hearted and upright, and one that feared God, and shunned evil."
-               (.text (.verse job [1 1])))))
+               (.text (.verse job ["1" "1"])))))
       (testing ".text"
         (is (= "   A time to love,   and a time to hate;\n   a time for war,   and a time for peace.\n"
-               (.text (.verse ecclesiastes [3 8])))))
+               (.text (.verse ecclesiastes ["3" "8"])))))
       (testing ".html"
         (is (= " &nbsp; A time to love, &nbsp; and a time to hate;<br /> &nbsp; a time for war, &nbsp; and a time for peace.<br />"
-               (.html (.verse ecclesiastes [3 8]))))))))
+               (.html (.verse ecclesiastes ["3" "8"]))))))))
