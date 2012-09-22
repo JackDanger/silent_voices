@@ -6,10 +6,7 @@
   (:use silentvoicesbible.books))
 
 (defn- -gets [prompt]
-  (println "in -gets")
-  (println prompt)
   (let [reader (java.io.BufferedReader. (java.io.InputStreamReader. (System/in)))]
-    (println "in let")
     (loop [_ nil]
       (print ".")
       (if (.ready reader)
@@ -17,7 +14,6 @@
           (recur (Thread/sleep 10))))))
 
 (defn- browse []
-  (println "in browse")
   (-gets "click any key to start reading the Silent Voices Tanakh")
   (doseq [verse (:verses (first tanakh))]
     (print (-gets "") (.text verse))))

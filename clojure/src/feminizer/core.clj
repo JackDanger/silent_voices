@@ -82,12 +82,12 @@
   (testing "forget"
     (learn "lady" "gentleman")
     (learn "gentleman" "lady")
-    (is (=           "this lady is crazy for that gentleman"
-           (feminize "this gentleman is crazy for that lady")))
+    (is (=           "this lady and that lady are crazy for that gentleman"
+           (feminize "this gentleman and that gentleman are crazy for that lady")))
     (forget "lady")
     (forget "gentleman")
-    (is (=           "this lady is crazy for that gentleman"
-           (feminize "this lady is crazy for that gentleman"))))
+    (is (=           "this lady and that lady are crazy for that gentleman"
+           (feminize "this lady and that lady are crazy for that gentleman"))))
   (testing "whitespace"
     (is (=        "   3 spaces preceed and two newlines follow\n\n"
         (feminize "   3 spaces preceed and two newlines follow\n\n")))))
