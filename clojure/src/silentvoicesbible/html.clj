@@ -1,6 +1,7 @@
 (ns silentvoicesbible.html
   (:require clojure.string)
-  (:use silentvoicesbible.books))
+  (:use silentvoicesbible.books)
+  (:use clostache.parser))
 
 (def output-directory "_site")
 
@@ -34,3 +35,5 @@
 (defn generate [args]
   (index)
   (doseq [b tanakh] (write-to (path b) (book-html b))))
+
+;(println (render-resource "templates/index.mustache" {:title "Tanakh"}))
