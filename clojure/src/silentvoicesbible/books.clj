@@ -101,30 +101,3 @@
 ; this defines the entire lazily-loaded bible object
 (def tanakh (map book (seq booklist)))
 
-
-(deftest test-books
-
-  (feminizer.core/learn "man" "woman")
-
-  (testing "books"
-    (is (= "Genesis" (:name (first tanakh))))
-    (is (= "Ezra / Nehemiah" (:name (last tanakh)))))
-
-  (testing "book parts"
-    (let [job          (nth tanakh 26)
-          genesis      (nth tanakh 0)
-          ecclesiastes (nth tanakh 30)]
-      (testing "verse"
-        (is (= "In the beginning God created the heaven and the earth."
-               (:source (first (.verses genesis)))))
-        (is (= "There was a man in the land of Uz, whose name was Job; and that man was whole-hearted and upright, and one that feared God, and shunned evil."
-               (:source (first (.verses job))))))
-      (testing "feminized verse"
-        (is (= "There was a woman in the land of Uz, whose name was Job; and that woman was whole-hearted and upright, and one that feared God, and shunned evil."
-               (.text (.verse job ["1" "1"])))))
-      (testing ".text"
-        (is (= "   A time to love,   and a time to hate;\n   a time for war,   and a time for peace.\n"
-               (.text (.verse ecclesiastes ["3" "8"])))))
-      (testing ".html"
-        (is (= " &nbsp; A time to love, &nbsp; and a time to hate;<br /> &nbsp; a time for war, &nbsp; and a time for peace.<br />"
-               (.html (.verse ecclesiastes ["3" "8"]))))))))

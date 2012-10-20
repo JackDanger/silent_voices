@@ -65,31 +65,3 @@
 (defn feminize [text]
   (join "\n" (map feminize-line (split text #"\n" -1))))
 
-
-(deftest test-feminizer.core
-  (testing "learn"
-    (is (=           "testes, not ovaries"
-           (feminize "testes, not ovaries")))
-    (learn "testes" "ovaries")
-    (is (=           "ovaries, not ovaries"
-           (feminize "testes, not ovaries")))
-    (learn "ovaries" "testes")
-    (is (=           "ovaries, not testes"
-           (feminize "testes, not ovaries")))
-    ; check the round-trip
-    (is (= "ovaries, not testes" (feminize (feminize "ovaries, not testes")))))
-
-  (testing "forget"
-    (learn "lady" "gentleman")
-    (learn "gentleman" "lady")
-    (is (=           "this lady and that lady are crazy for that gentleman"
-           (feminize "this gentleman and that gentleman are crazy for that lady")))
-    (forget "lady")
-    (forget "gentleman")
-    (is (=           "this lady and that lady are crazy for that gentleman"
-           (feminize "this lady and that lady are crazy for that gentleman"))))
-  (testing "whitespace"
-    (is (=        "   3 spaces preceed and two newlines follow\n\n"
-        (feminize "   3 spaces preceed and two newlines follow\n\n")))))
-
-

@@ -13,23 +13,10 @@
         {primary secondary, secondary primary})
       {})))
 
-(defn- associations [text]
+(defn associations [text]
   (reduce conj (map association-map (split-lines text))))
 
 (defn learn-from [file]
   (doall
     (for [[primary secondary] (associations (slurp file))]
       (learn primary secondary))))
-
-
-(deftest test-forms
-  (testing "associations"
-    (is (= {"bi" "directional", "directional" "bi", "single" "direction"}
-           (associations "
-                  # comment
-                  too many words
-                  single    -> direction
-                  bi  directional
-                  "))))
-)
-
