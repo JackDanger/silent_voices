@@ -22,7 +22,7 @@
   (feminizer.forms/learn-from "resources/default.forms")
   (feminizer.forms/learn-from "resources/tanakh.forms")
 
-  (if (= "browse" (first args))
-    (browse))
-  (if (= "generate" (first args))
-    (silentvoicesbible.html/generate (rest args))))
+  (case (first args)
+        "browse" (browse)
+        "generate" (silentvoicesbible.html/generate (rest args))
+        (println "USAGE: lein run [browse|generate]")))
