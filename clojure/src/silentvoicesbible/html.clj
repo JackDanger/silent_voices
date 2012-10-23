@@ -13,6 +13,7 @@
   (str output-directory "/" (filename book) ".html"))
 
 (defn- write-to [path lines]
+  (print ".")
   (.mkdir (java.io.File. output-directory))
   (with-open [writer (clojure.java.io/writer path)]
     (doseq [line lines] (.write writer line))))
