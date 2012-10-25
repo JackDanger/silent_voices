@@ -22,12 +22,12 @@
   (describe "feminized verse"
     (it ""
       (should= "There was a woman in the land of Uz, whose name was Job; and that woman was whole-hearted and upright, and one that feared God, and shunned evil."
-             (.text (.verse job ["1" "1"])))))
+             (.text (.verse job ["1" "1"]) "feminized"))))
   (describe ".text"
     (it ""
       (should= "   A time to love,   and a time to hate;\n   a time for war,   and a time for peace.\n"
-             (.text (.verse ecclesiastes ["3" "8"])))))
+             (.text (.verse ecclesiastes ["3" "8"]) "feminized"))))
   (describe ".html"
     (it ""
       (should= " &nbsp; A time to love, &nbsp; and a time to hate;<br /> &nbsp; a time for war, &nbsp; and a time for peace.<br />"
-             (.html (.verse ecclesiastes ["3" "8"]))))))
+             (.html (.verse ecclesiastes ["3" "8"]) "feminized")))))
