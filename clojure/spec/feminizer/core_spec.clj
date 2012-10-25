@@ -13,7 +13,12 @@
     (should=           "ovaries, not testes"
              (feminize "testes, not ovaries"))
     ; check the round-trip
-    (should= "ovaries, not testes" (feminize (feminize "ovaries, not testes")))))
+    (should= "ovaries, not testes" (feminize (feminize "ovaries, not testes"))))
+  (it "translates forms even when they're adjacent"
+    (learn "king" "queen")
+    (learn "son"  "daughter")
+    (should=           "queen daughter"
+             (feminize "king son"))))
 
 (describe "forget"
   (it "removes from the known forms"
