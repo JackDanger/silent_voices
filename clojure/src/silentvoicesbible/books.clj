@@ -1,6 +1,5 @@
 (ns silentvoicesbible.books
-  (:use clojure.test)
-  (:use silentvoicesbible.jps)
+  (:require silentvoicesbible.jps)
   (:require [net.cgrand.enlive-html :as html])
   (:require feminizer.core))
 
@@ -42,9 +41,9 @@
   "et35" "Ezra / Nehemiah"
 ))
 
-(defprotocol JPSFormatted
-  (html [this])
-  (text [this]))
+(defprotocol Translated
+  (html [this translation])
+  (text [this translation]))
 (defprotocol Chaptered
   (verse [this idx])
   (verses [this]))
@@ -65,10 +64,19 @@
     (flatten (map :verses (:chapters this)))))
 
 (defrecord Chapter [number verses])
+
 (defrecord Verse [volume chapter number source]
-  JPSFormatted
-  (html [this] (feminizer.core/feminize (jps-html (:source this))))
-  (text [this] (feminizer.core/feminize (jps-text (:source this)))))
+  Translated
+  (html [this translation] 
+    (let [operation (if (= "feminized" translation)
+                        feminizer.core/feminize
+                        str)]
+      (operation (silentvoicesbible.jps/jps-html (:source this)))))
+  (text [this translation]
+    (let [operation (if (= "feminized" translation)
+                        feminizer.core/feminize
+                        str)]
+      (operation (silentvoicesbible.jps/jps-text (:source this))))))
 
 (defn- book-text [filename]
   (html/text

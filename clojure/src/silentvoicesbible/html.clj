@@ -9,8 +9,6 @@
   (clojure.string/replace (.toLowerCase (:name book))
                            #"[^\d\w-_]"
                            "-"))
-(defn- path [book]
-  (str output-directory "/" (filename book) ".html"))
 
 (defn- write-to [path lines]
   (print ".")
@@ -29,12 +27,16 @@
                  tanakh)
             ["<ul>"])))
 
-(defn- book-html [book]
-  (concat ["<h2>" (:name book) "</h1>"]
-       (map #(str (.html %) " ") (.verses book))))
+(defn- book-html [book args]
+  (let [translation (str (or (nfirst (mapcat #(re-seq #"--translation=([\w]+)" %) args))
+                              "feminized"))]
+    (concat ["<h2>" (:name book) "</h1>"]
+         (map #(str (.html % translation) " ") (.verses book)))))
 
 (defn generate [args]
   (index)
-  (doseq [b tanakh] (write-to (path b) (book-html b))))
+  (doseq [book tanakh]
+    (write-to (str output-directory "/" (filename book) ".html")
+              (book-html book args))))
 
 ;(println (render-resource "templates/index.mustache" {:title "Tanakh"}))

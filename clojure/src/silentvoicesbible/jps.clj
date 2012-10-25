@@ -1,5 +1,4 @@
-(ns silentvoicesbible.jps
-  (:use clojure.test))
+(ns silentvoicesbible.jps)
 
 (def pattern #"\s?\{([SPN])\}\s?")
 
