@@ -29,7 +29,12 @@
   (it "works for hyphenated forms"
     (learn "man-child" "woman-child")
     (should=           "Wherein it was said: 'A woman-child is brought forth.'"
-             (feminize "Wherein it was said: 'A man-child is brought forth.'"))))
+             (feminize "Wherein it was said: 'A man-child is brought forth.'")))
+
+  (it "works for sentence-final forms"
+    (learn "cowboy" "cowgirl")
+    (should=           "Is that a cowgirl?"
+             (feminize "Is that a cowboy?"))))
 
 (describe "forget"
   (it "removes from the known forms"

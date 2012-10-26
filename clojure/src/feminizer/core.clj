@@ -11,7 +11,7 @@
 
 (def _replace clojure.string/replace) ; how to do this with :use without warnings?
 
-(def word-boundary "[ ,.;'\"(){}]")
+(def word-boundary "[^a-zA-Z-]")
 (def loose-regex (ref #""))
 (def tight-regex (ref #""))
 (def forms (ref {}))
