@@ -53,11 +53,18 @@
   (if (re-find #"^\s*$" text)
       text ; don't try to translate blank lines
       (join " " ; do the search & replace in anything between spaces.
-         (map (fn [match]
-                  (_replace match
-                            @tight-regex
-                            swap-form))
-              (split text #" ")))))
+        (map
+          (fn [match]
+            (_replace
+              (_replace (str " " match " ") ; normalize string initial/final terms
+                        @loose-regex
+                        (fn [m]
+                          (_replace m
+                                    @tight-regex
+                                    swap-form)))
+              #" (.*) "
+              (fn [[_ s]] s))) ; strip normalized whitespace
+          (split text #" ")))))
 
 (defn feminize [text]
   (join "\n" (map feminize-line (split text #"\n" -1))))
