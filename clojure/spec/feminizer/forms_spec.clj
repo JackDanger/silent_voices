@@ -11,4 +11,8 @@
                   too many words
                   single    -> direction
                   bi  directional
-                  "))))
+                  ")))
+  (it "allows hyphenated forms"
+    (should= {"man-child" "woman-child"}
+             (associations "
+                  man-child -> woman-child"))))

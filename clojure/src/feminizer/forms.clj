@@ -5,7 +5,7 @@
 
 (defn- association-map [line]
   (let [[_ primary direction secondary] (re-matches
-                                           #"^(\w+) *(->)? *(\w+)$"
+                                           #"^([-\w]+) *(->)? *([-\w]+)$"
                                            (trim line))]
     (if (and primary secondary)
       (if direction

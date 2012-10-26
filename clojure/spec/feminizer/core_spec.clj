@@ -24,7 +24,12 @@
   (it "doesn't replace word-fragments"
     (learn "male" "female")
     (should=           "Tamale for the female, please."
-             (feminize "Tamale for the male, please."))))
+             (feminize "Tamale for the male, please.")))
+
+  (it "works for hyphenated forms"
+    (learn "man-child" "woman-child")
+    (should=           "Wherein it was said: 'A woman-child is brought forth.'"
+             (feminize "Wherein it was said: 'A man-child is brought forth.'"))))
 
 (describe "forget"
   (it "removes from the known forms"
