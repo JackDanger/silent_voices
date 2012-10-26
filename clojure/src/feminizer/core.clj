@@ -11,7 +11,7 @@
 
 (def _replace clojure.string/replace) ; how to do this with :use without warnings?
 
-(def word-boundary "[ ,.;'\"(){}]?")
+(def word-boundary "[ ,.;'\"(){}]")
 (def loose-regex (ref #""))
 (def tight-regex (ref #""))
 (def forms (ref {}))
@@ -52,15 +52,12 @@
 (defn- feminize-line [text]
   (if (re-find #"^\s*$" text)
       text ; don't try to translate blank lines
-      (_replace
-        (_replace (str " " text " ") ; normalize string initial/final terms
-                  @loose-regex
-                  (fn [match]
-                    (_replace match
-                              @tight-regex
-                              swap-form)))
-        #" (.*) "
-        (fn [[_ s]] s)))) ; strip normalized whitespace
+      (join " " ; do the search & replace in anything between spaces.
+         (map (fn [match]
+                  (_replace match
+                            @tight-regex
+                            swap-form))
+              (split text #" ")))))
 
 (defn feminize [text]
   (join "\n" (map feminize-line (split text #"\n" -1))))
