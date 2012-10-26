@@ -18,11 +18,12 @@ patriarch matriarch
 patrimony matrimony
 boy girl
 boys girls
+man-child woman-child
 son daughter
 sons daughters
 he she
 # note: perhaps I should do all the "(.*) him" pairs individually?
-his hers
+his her
 him her
 himself herself
 foreskin vulva
