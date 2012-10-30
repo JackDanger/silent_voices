@@ -105,7 +105,7 @@
   (->Chapter (:chapter (first verses)) verses))
 
 (defn- book [[filename name]]
-  (->Book name (map chapter (partition-by :chapter (map parse-verse (lines filename))))))
+  (->Book name (map chapter (partition-by :chapter (sort-by :chapter (map parse-verse (lines filename)))))))
 
 
 ; this defines the entire lazily-loaded bible object

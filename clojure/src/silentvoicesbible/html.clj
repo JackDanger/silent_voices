@@ -23,9 +23,12 @@
 
 (defn- page [book chapter translation]
   (render-resource "templates/chapter.mustache"
-                   {:book book
+                   {:title (str (:name book) " " (:number chapter))
                     :chapter (:number chapter)
-                    :chapters (map (fn [c] {:filename (filename book c) :number (:number c)}) (:chapters book))
+                    :chapters (sort-by :number
+                                       (map #(assoc % :filename (filename book (:number %))
+                                                      :number (Integer/parseInt (:number %)))
+                                            (:chapters book)))
                     :columns
                       (let [vs (for [v (.verses chapter)] (assoc v :html (.html v translation)))]
                         (for [cols (partition (int (/ (count vs) 2)) vs)] {:verses cols}))
@@ -35,9 +38,8 @@
   (time
     (let [translation (str (or (nfirst (mapcat #(re-seq #"--translation=([\w]+)" %) args))
                                 "feminized"))]
-      (.exec (Runtime/getRuntime) "mkdir -p _site;ln -fs ../resources/assets _site/assets")
+      (.exec (Runtime/getRuntime) "ln -fs ../resources/assets _site/assets")
       (index)
-      (let [book (first tanakh)]
-      (doseq [chapter (:chapters book)]
+      (doseq [book tanakh chapter (:chapters book)]
         (write-to (str output-directory "/" (filename book (:number chapter)))
-                  (page book chapter translation)))))))
+                  (page book chapter translation))))))

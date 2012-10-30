@@ -30,7 +30,7 @@
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand book" href="{{ current-page }}">The Book of {{ title }}</a>
+          <a class="brand book" href="{{ current-page }}">{{ book }}</a>
           <a class="brand" href="index.html">Silent Voices Tanakh</a>
         </div>
       </div>
@@ -44,6 +44,16 @@
             <li><a href="{{ filename }}"> Chapter {{ number }} </a></li>
           {{/chapters}}
         </div>
+
+        {{#columns}}
+          <div class='span4'>
+            {{#verses}}
+              <span>
+                <sup class=verse-number>{{number}}</sup>{{{ html }}}
+              </span>
+            {{/verses}}
+          </div>
+        {{/columns}}
       </div>
 
     </div> <!-- /container -->
