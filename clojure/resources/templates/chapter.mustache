@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Silent Voices Tanakh</title>
+    <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,6 +30,7 @@
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="navbar-inner">
         <div class="container">
+          <a class="brand book" href="{{ current-page }}">The Book of {{ title }}</a>
           <a class="brand" href="index.html">Silent Voices Tanakh</a>
         </div>
       </div>
@@ -37,15 +38,12 @@
 
     <div class="container">
 
-      <div class="span3">
-        <ul id=books>
-          {{#books}}
-            <li><a href="{{ filename }}"> {{ name }} </a></li>
-          {{/books}}
-        </ul>
-      </div>
-      <div class="span7">
-        <h1>Silent Voices Tanakh</h1>
+      <div class="verses">
+        <div class="span2">
+          {{#chapters}}
+            <li><a href="{{ filename }}"> Chapter {{ number }} </a></li>
+          {{/chapters}}
+        </div>
       </div>
 
     </div> <!-- /container -->
