@@ -13,16 +13,10 @@
           (.readLine reader)
           (recur (Thread/sleep 10))))))
 
-(defn- browse []
-  (-gets "click any key to start reading the Silent Voices Tanakh")
-  (doseq [verse (:verses (first tanakh))]
-    (print (-gets "") (.text verse))))
-
 (defn -main [ & args ]
   (feminizer.forms/learn-from "resources/default.forms")
   (feminizer.forms/learn-from "resources/tanakh.forms")
 
   (case (first args)
-        "browse" (browse)
         "generate" (silentvoicesbible.html/generate (rest args))
         (println "USAGE: lein run [browse|generate]")))

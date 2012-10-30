@@ -1,0 +1,13 @@
+.verses {
+  padding-top: 2em;
+  font-family: Georgia, Helvetica, serif;
+  font-size: 1.2em;
+  line-height: 1.6em;
+}
+
+.navbar a.brand {
+  float: right;
+}
+.navbar a.book {
+  float: left;
+}

@@ -1,7 +1,9 @@
 (ns silentvoicesbible.books
-  (:require silentvoicesbible.jps)
-  (:require [net.cgrand.enlive-html :as html])
-  (:require feminizer.core))
+  (:require silentvoicesbible.jps
+            [net.cgrand.enlive-html :as html]
+            feminizer.core
+            clojure.string))
+
 
 (def booklist (sorted-map
   "et01" "Genesis"
@@ -79,11 +81,13 @@
       (operation (silentvoicesbible.jps/jps-text (:source this))))))
 
 (defn- book-text [filename]
-  (html/text
-    (first
-      (html/select
-        (html/html-resource (java.io.File. (str "../et/" filename ".htm")))
-        [:body]))))
+  (let [text (html/text
+               (first
+                   (html/select
+                     (html/html-resource (java.io.File. (str "../et/" filename ".htm")))
+                     [:body])))]
+    ; remove the non-printable characters that pervades source text
+    (clojure.string/join (filter #(> 128 (Character/codePointAt (str %) 0)) (concat text)))))
 
 (defn- lines [filename]
   (rest
@@ -92,12 +96,10 @@
       (clojure.string/split (book-text filename) #"\n"))))
 
 (defn- parse-verse [line]
-  (try
-    (let [parts (drop 2 (re-find #"^(([12EN]).)?(\d+),(\d+) (.*)$" line))]
-      (let [source (last parts)       ; we want hapter/verse to be integers
-            index  (take 3 parts)]
-        (apply ->Verse (concat index [source]))))
-    (catch Exception e (prn (str line "\n" e)))))
+  (let [parts (drop 2 (re-find #"^(([12EN]))?(\d+),(\d+) (.*)$" line))]
+    (let [source (last parts)       ; we want hapter/verse to be integers
+          index  (take 3 parts)]
+      (apply ->Verse (concat index [source])))))
 
 (defn- chapter [verses]
   (->Chapter (:chapter (first verses)) verses))

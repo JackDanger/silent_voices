@@ -1,14 +1,14 @@
 (ns silentvoicesbible.html
-  (:require clojure.string)
-  (:use silentvoicesbible.books)
-  (:use clostache.parser))
+  (:require clojure.string
+            [silentvoicesbible.books :refer :all]
+            [clostache.parser :refer :all]))
 
 (def output-directory "_site")
 
 (defn- filename [book]
-  (clojure.string/replace (.toLowerCase (:name book))
-                           #"[^\d\w-_]"
-                           "-"))
+  (str (clojure.string/replace (.toLowerCase (:name book))
+                               #"[^\d\w-_]"
+                               "-") ".html"))
 
 (defn- write-to [path lines]
   (print ".")
@@ -21,22 +21,27 @@
     (str output-directory "/index.html")
     (concat ["<h1>Silent Voices Tanakh</h1>"]
             ["<ul>"]
-            (map #(str "<li><a href=" (filename %1) ".html>"
+            (map #(str "<li><a href=" (filename %1) ">"
                        (:name %1)
                        "</a></li>")
                  tanakh)
             ["<ul>"])))
 
-(defn- book-html [book args]
-  (let [translation (str (or (nfirst (mapcat #(re-seq #"--translation=([\w]+)" %) args))
-                              "feminized"))]
-    (concat ["<h2>" (:name book) "</h1>"]
-         (map #(str (.html % translation) " ") (.verses book)))))
+(defn- book-str [book translation medium]
+  (render-resource "templates/index.mustache"
+                   {:title (:name book)
+                    :cs [{:verses [{:html "<>"}]}]
+                    :columns
+                      (let [vs (for [v (.verses book)] (assoc v :html (.html v translation)))]
+                        (for [cols (partition (/ (count vs) 2) vs)] {:verses cols }))
+                    :current-page (filename book)}))
 
 (defn generate [args]
-  (index)
-  (doseq [book tanakh]
-    (write-to (str output-directory "/" (filename book) ".html")
-              (book-html book args))))
-
-;(println (render-resource "templates/index.mustache" {:title "Tanakh"}))
+  (time
+    (let [translation (str (or (nfirst (mapcat #(re-seq #"--translation=([\w]+)" %) args))
+                                "feminized"))]
+      (.exec (Runtime/getRuntime) "ln -fs ../resources/assets _site/assets")
+      (index)
+      (doseq [book tanakh]
+        (write-to (str output-directory "/" (filename book))
+                  [(book-str book translation "html")])))))
