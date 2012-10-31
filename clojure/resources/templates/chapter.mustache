@@ -39,17 +39,23 @@
     <div class="container">
 
       <div class="verses">
-        <div class="span2">
-          {{#chapters}}
-            <li><a href="{{ filename }}"> Chapter {{ number }} </a></li>
-          {{/chapters}}
+        <div class="chapters span3">
+          <div class="well">
+            <h4>Chapters</h4>
+            <ul>
+              {{#chapters}}
+                <li><a href="{{ filename }}"> {{ book }} {{ number }} </a></li>
+              {{/chapters}}
+            </ul>
+          </div>
         </div>
 
         {{#columns}}
-          <div class='span4'>
+          <div class='column span4'>
             {{#verses}}
               <span>
-                <sup class=verse-number>{{number}}</sup>{{{ html }}}
+                <sup class="verse-number">{{number}}</sup>
+                {{{ html }}}
               </span>
             {{/verses}}
           </div>

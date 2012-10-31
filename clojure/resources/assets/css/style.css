@@ -1,3 +1,8 @@
+.chapters {
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  background-color: #F5F5F5;
+}
 .verses {
   padding-top: 2em;
   font-family: Georgia, Helvetica, serif;
@@ -5,9 +10,39 @@
   line-height: 1.6em;
 }
 
+.verses .columns {
+}
+
 .navbar a.brand {
   float: right;
 }
 .navbar a.book {
   float: left;
+}
+.verses span {
+  position: relative;
+  padding-left: 2px;
+}
+.verses span sup {
+  display: none;
+}
+
+.chapters ul {
+  margin: 0;
+}
+.chapters ul li {
+  list-style: none;
+}
+.chapters ul li a {
+  color: ##08C;
+  font-family: Helvetica;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+.chapters ul li.current a {
+  color: #FFF;
+  background-color: #08C;
+}
+.chapters h4 {
+  font-family: Helvetica;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }

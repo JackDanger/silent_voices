@@ -96,7 +96,7 @@
       (clojure.string/split (book-text filename) #"\n"))))
 
 (defn- parse-verse [line]
-  (let [parts (drop 2 (re-find #"^([EN])?(\d+),(\d+) (.*)$" line))]
+  (let [parts (drop 1 (re-find #"^([EN])?(\d+),(\d+) (.*)$" line))]
     (let [source (last parts)       ; we want hapter/verse to be integers
           index  (take 3 parts)]
       (apply ->Verse (concat index [source])))))
