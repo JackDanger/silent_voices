@@ -28,26 +28,13 @@
                     :chapter (:number chapter)
                     :chapters (sort-by :number
                                        (map #(assoc % :filename (filename book (:number %))
-                                                      :number (Integer/parseInt (:number %)))
+                                                      :number (Integer/parseInt (:number %))
+                                                      :is-current (= (:number %) (:number chapter)))
                                             (:chapters book)))
                     :columns
                       (let [vs (for [v (.verses chapter)] (assoc v :html (.html v translation)))]
                         (for [column (partition (int (/ (count vs) 2)) vs)] {:verses column}))
                     :current-page (filename book (:number chapter))}))
-
-  ;(render-resource "templates/chapter.mustache"
-  ;                 (let [m
-  ;                 {:title (str (:name book) " " (:number chapter))
-  ;                  :chapter (:number chapter)
-  ;                  :chapters (sort-by :number
-  ;                                     (map #(assoc % :filename (filename book (:number %))
-  ;                                                    :number (Integer/parseInt (:number %)))
-  ;                                          (:chapters book)))
-  ;                  :columns
-  ;                    (let [vs (for [v (.verses chapter)] (assoc v :html (.html v translation)))]
-  ;                      (for [cols (partition (int (/ (count vs) 2)) vs)] {:verses cols}))
-  ;                  :current-page (filename book (:number chapter))}]
-  ;                            {})))
 
 (defn generate [args]
   (time
