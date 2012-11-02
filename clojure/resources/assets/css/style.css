@@ -1,7 +1,5 @@
 .chapters {
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  background-color: #F5F5F5;
+  text-align: center;
 }
 .chapters ul {
   margin: 0;
