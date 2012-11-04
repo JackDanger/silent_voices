@@ -12,6 +12,9 @@
                   single    -> direction
                   bi  directional
                   ")))
+  (it "handles case sanely"
+    (should= {"Adam" "Ada" "Ada" "Adam"}
+             (associations "Adam Ada")))
   (it "allows hyphenated forms"
     (should= {"man-child" "woman-child"}
              (associations "

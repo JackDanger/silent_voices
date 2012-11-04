@@ -36,6 +36,11 @@
     (should=           "Is that a cowgirl?"
              (feminize "Is that a cowboy?"))))
 
+  (it "handles case sanely"
+    (learn "Adam" "Ada")
+    (should=           "first there was Ada"
+             (feminize "first there was Adam")))
+
 (describe "forget"
   (it "removes from the known forms"
     (learn "lady" "gentleman")
