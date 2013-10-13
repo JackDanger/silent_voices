@@ -17,6 +17,6 @@
   (reduce conj (map association-map (split-lines text))))
 
 (defn learn-from [file]
-  (doall
+  (dorun
     (for [[primary secondary] (associations (slurp file))]
       (learn primary secondary))))

@@ -16,7 +16,10 @@
 (defn -main [ & args ]
   (feminizer.forms/learn-from "resources/default.forms")
   (feminizer.forms/learn-from "resources/tanakh.forms")
+  (feminizer.core/learn "mankind" "womankind")
+  (feminizer.core/learn "manly" "womanly")
 
   (case (first args)
         "generate" (silentvoicesbible.html/generate (rest args))
+        "feminize" (print (feminizer.core/feminize (slurp (first (rest args)))))
         (println "USAGE: lein run [browse|generate]")))
