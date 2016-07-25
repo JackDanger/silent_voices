@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activesupport (3.0.3)
     addressable (2.2.6)
@@ -30,8 +30,7 @@ GEM
     launchy (2.0.5)
       addressable (~> 2.2.6)
     liquid (2.3.0)
-    maruku (0.6.0)
-      syntax (>= 1.0.0)
+    maruku (0.7.2)
     mime-types (1.17.1)
     mini_portile2 (2.1.0)
     nokogiri (1.6.8)
@@ -48,7 +47,6 @@ GEM
     rubyzip (0.9.4)
     shotgun (0.9)
       rack (>= 1.0)
-    syntax (1.0.0)
     term-ansicolor (1.0.7)
     utf8_utils (2.0.1)
     without_accents (0.9.0)
