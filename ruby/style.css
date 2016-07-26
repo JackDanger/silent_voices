@@ -117,7 +117,6 @@ div#facebook_like {
 /* Start Page */
 
 #start_page p {
-  font-size: 1.2em;
   line-height: 1.8em;
 }
 #start_page a.read_on {
@@ -131,9 +130,6 @@ div#facebook_like {
 #start_page a.read_on:hover {
   background-color: #1B1;
 }
-#start_page a.final {
-  font-size: 1.8em;
-}
 #start_page h2 {
   text-align: left;
   color: #0A0;
@@ -146,7 +142,7 @@ div#facebook_like {
   display: none;
 }
 #start_page .large_quote {
-  font-size: 2.2em;
+  font-size: 2em;
   line-height: 1.5em;
 }
 #start_page .large_quote em {
@@ -159,7 +155,7 @@ div#facebook_like {
   text-align: right;
 }
 #start_page .quote {
-  font-size: 32px;
+  font-size: 2em;
   margin-bottom: 1em;
   text-align: right;
 }
@@ -167,7 +163,6 @@ div#facebook_like {
   margin: 0.5em 0 0 0;
 }
 #start_page ul {
-  font-size: 1.3em;
   line-height: 1.6em;
   margin-top: 0.5em;
 }
@@ -200,9 +195,6 @@ div#facebook_like {
 #index_page .group h3{
   color: #0A0;
 }
-#index_page a.book_name_link {
-  font-size: 1.4em;
-}
 #index_page span.comma {
   padding-right: 0.5em;
 }
@@ -222,7 +214,6 @@ div.home_link h2 {
 }
 #chapter_name {
   text-align: center;
-  font-size: 1.6em;
   margin: 0.5em 0;
 }
 .nav a {
