@@ -97,6 +97,7 @@ module SilentVoices
         'Mark' =>         'Margaret',
         'Matthew' =>      'Matthia',
         'Noah' =>         'Noa',
+        'Tyler' =>        'Sarah',
         'Paul' =>         'Paula',
         'Peter' =>        'Petra',
         'Samuel' =>       'Samantha',
