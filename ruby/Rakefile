@@ -54,7 +54,8 @@ task :irb do
 end
 
 task :deploy do
-  system %Q{git commit voices index.html blog -m "building"}
-  system %Q{git push github master}
-  system %Q{ssh studioda@9suits.com "cd /www/silentvoicesbible.com; git pull"}
+  desc "put an archive in S3"
+  task :s3 do
+    run "aws s3 sync . s3://silentvoicesbible.com/"
+  end
 end
